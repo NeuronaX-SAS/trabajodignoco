@@ -53,7 +53,7 @@ const HeroSection: React.FC = () => {
               Innovación Legal en Colombia
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              El poder de un bufete<br />
+              El poder de una firma de abogados<br />
               <span className="text-white/90">en la palma de tu mano</span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8 max-w-xl">
