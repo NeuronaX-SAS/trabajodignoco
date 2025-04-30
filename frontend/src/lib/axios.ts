@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  // TODO: Use environment variable for base URL
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001', // Assuming backend runs on 3001
+  // Use environment variable set in Cloudflare Pages / .env.local
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
