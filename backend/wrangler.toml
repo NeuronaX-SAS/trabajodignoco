@@ -1,8 +1,9 @@
 # Top-level configuration
 name = "trabajodigno-backend"
-main = "dist/worker.js" # Point to our new worker entry point
+main = "dist/worker.js"
 compatibility_date = "2025-04-30"
 compatibility_flags = ["nodejs_compat"]
 
-# Remove the build section entirely to skip the build process
-# We'll use the pre-built worker.js file directly
+# Use the full build command to compile the NestJS app and the worker
+[build]
+command = "npm run build"
