@@ -4,6 +4,4 @@ main = "dist/worker.js"
 compatibility_date = "2025-04-30"
 compatibility_flags = ["nodejs_compat"]
 
-# Use the full build command to compile the NestJS app and the worker
-[build]
-command = "npm run build"
+# Remove build section to use the pre-built worker file
