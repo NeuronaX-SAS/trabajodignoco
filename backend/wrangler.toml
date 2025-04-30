@@ -4,4 +4,5 @@ main = "dist/worker.js"
 compatibility_date = "2025-04-30"
 compatibility_flags = ["nodejs_compat"]
 
-# Remove build section to use the pre-built worker file
+# Be explicit about nodejs compatibility
+node_compat = true
