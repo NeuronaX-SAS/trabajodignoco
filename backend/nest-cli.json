@@ -4,5 +4,26 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true
+  },
+  "webpack": true,
+  "webpackOptions": {
+    "externals": [
+      "mock-aws-s3",
+      "aws-sdk",
+      "nock",
+      "@nestjs/websockets/socket-module",
+      "@nestjs/microservices/microservices-module",
+      "@nestjs/websockets",
+      "@nestjs/microservices"
+    ],
+    "ignoreWarnings": [
+      "^\\(?!CriticalDependenciesWarning$\\)"
+    ],
+    "output": {
+      "libraryTarget": "module"
+    },
+    "experiments": {
+      "outputModule": true
+    }
   }
 }
