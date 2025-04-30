@@ -1,19 +1,8 @@
 # Top-level configuration
-name = "trabajodigno-backend" # Replace with your worker name
-main = "dist/main.js" # Point to the output of npm run build
-compatibility_date = "2025-04-30" # Updated to a recent date for better Node.js compatibility
-compatibility_flags = ["nodejs_compat"] # Enable Node.js compatibility
-no_bundle = true # Tell Wrangler NOT to bundle the output of the build command
+name = "trabajodigno-backend"
+main = "dist/worker.js" # Point to our new worker entry point
+compatibility_date = "2025-04-30"
+compatibility_flags = ["nodejs_compat"]
 
-# Re-added build section to run NestJS build
-[build]
-command = "npm run build" # Command to build your NestJS application
-cwd = "." # Directory containing package.json
-
-# Optional: Add environment variables, secrets, KV namespaces, etc. here
-# [vars]
-# MY_VAR = "my-value"
-
-# [[kv_namespaces]]
-# binding = "MY_KV_NAMESPACE"
-# id = "your_kv_namespace_id"
+# Remove the build section entirely to skip the build process
+# We'll use the pre-built worker.js file directly
