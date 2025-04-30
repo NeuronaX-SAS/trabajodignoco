@@ -1,0 +1,19 @@
+# Top-level configuration
+name = "trabajodigno-backend" # Replace with your worker name
+main = "dist/main.js" # Entry point of your built application
+compatibility_date = "2024-04-05" # Set to a recent date
+
+# Enable Node.js compatibility
+compatibility_flags = ["nodejs_compat"]
+
+[build]
+command = "npm run build" # Command to build your NestJS application
+cwd = "." # Directory containing package.json
+
+# Optional: Add environment variables, secrets, KV namespaces, etc. here
+# [vars]
+# MY_VAR = "my-value"
+
+# [[kv_namespaces]]
+# binding = "MY_KV_NAMESPACE"
+# id = "your_kv_namespace_id"
