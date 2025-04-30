@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { PaletteOptions } from '@mui/material/styles/createPalette';
+import { PaletteOptions } from '@mui/material/styles';
 
 // Claude-inspired color palette based on RGB(222, 115, 86)
 const palette: PaletteOptions = {
