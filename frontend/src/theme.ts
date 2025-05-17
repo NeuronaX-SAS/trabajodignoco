@@ -1,182 +1,132 @@
-import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import type { ThemeOptions } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
+import { Montserrat, Open_Sans } from 'next/font/google';
 
-// Define the new color palette
-const primaryColor = {
-  main: '#733A19',
-  light: '#8B4E2C',
+// Define fonts
+const montserrat = Montserrat({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const openSans = Open_Sans({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+// Brand colors
+const primary = {
+  main: '#733A19', // Brown/rust
+  light: '#8B5E43',
   dark: '#5C2E14',
   contrastText: '#F2F0F0',
 };
 
-const secondaryColor = {
-  main: '#BFAF8F',
-  light: '#D0C7AF',
-  dark: '#A69977',
-  contrastText: '#0E1013',
+const secondary = {
+  main: '#153959', // Deep blue
+  light: '#2B5A7A',
+  dark: '#0F283D',
+  contrastText: '#F2F0F0',
 };
 
-const backgroundColor = {
-  default: '#F7F5F2',
-  paper: '#FFFFFF',
-  dark: '#0E1013',
+const neutral = {
+  darkest: '#0E1013', // Nearly black
+  dark: '#333333',
+  medium: '#666666',
+  light: '#BFAF8F', // Beige/tan
+  lightest: '#F2F0F0', // Off-white
 };
 
-const textColor = {
-  primary: '#0E1013',
-  secondary: '#4A4A4A',
-  disabled: '#9E9E9E',
-  hint: '#6A6A6A',
-  light: '#F2F0F0',
-};
-
-// Create base theme options
-const themeOptions: ThemeOptions = {
+// Create theme
+const theme = createTheme({
   palette: {
-    primary: primaryColor,
-    secondary: secondaryColor,
+    primary,
+    secondary,
     background: {
-      default: backgroundColor.default,
-      paper: backgroundColor.paper,
+      default: neutral.lightest,
+      paper: '#FFFFFF',
     },
     text: {
-      primary: textColor.primary,
-      secondary: textColor.secondary,
-      disabled: textColor.disabled,
+      primary: neutral.darkest,
+      secondary: neutral.dark,
     },
-    common: {
-      black: '#0E1013',
-      white: '#F2F0F0',
+    error: {
+      main: '#D32F2F',
+    },
+    warning: {
+      main: '#ED6C02',
+    },
+    info: {
+      main: secondary.main,
+    },
+    success: {
+      main: '#2E7D32',
     },
   },
   typography: {
-    fontFamily: [
-      'var(--font-geist-sans)',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-    ].join(','),
+    fontFamily: openSans.style.fontFamily,
     h1: {
+      fontFamily: montserrat.style.fontFamily,
       fontWeight: 700,
-      fontSize: '3.5rem',
-      lineHeight: 1.2,
-      letterSpacing: '-0.01em',
     },
     h2: {
+      fontFamily: montserrat.style.fontFamily,
       fontWeight: 700,
-      fontSize: '2.75rem',
-      lineHeight: 1.2,
-      letterSpacing: '-0.01em',
     },
     h3: {
+      fontFamily: montserrat.style.fontFamily,
       fontWeight: 600,
-      fontSize: '2.25rem',
-      lineHeight: 1.3,
     },
     h4: {
+      fontFamily: montserrat.style.fontFamily,
       fontWeight: 600,
-      fontSize: '1.75rem',
-      lineHeight: 1.3,
     },
     h5: {
-      fontWeight: 600,
-      fontSize: '1.5rem',
-      lineHeight: 1.4,
+      fontFamily: montserrat.style.fontFamily,
+      fontWeight: 500,
     },
     h6: {
-      fontWeight: 600,
-      fontSize: '1.25rem',
-      lineHeight: 1.4,
+      fontFamily: montserrat.style.fontFamily,
+      fontWeight: 500,
     },
     subtitle1: {
       fontWeight: 500,
-      fontSize: '1.125rem',
-      lineHeight: 1.5,
-      letterSpacing: '0.005em',
     },
     subtitle2: {
       fontWeight: 500,
-      fontSize: '1rem',
-      lineHeight: 1.5,
-      letterSpacing: '0.005em',
     },
     body1: {
       fontSize: '1rem',
       lineHeight: 1.6,
-      letterSpacing: '0.005em',
     },
     body2: {
       fontSize: '0.875rem',
       lineHeight: 1.6,
-      letterSpacing: '0.005em',
     },
     button: {
       fontWeight: 600,
-      fontSize: '0.9375rem',
-      lineHeight: 1.75,
-      letterSpacing: '0.02em',
       textTransform: 'none',
     },
   },
   shape: {
     borderRadius: 8,
   },
-  shadows: [
-    'none', // 0
-    '0px 2px 6px rgba(0, 0, 0, 0.06)', // 1
-    '0px 4px 8px rgba(0, 0, 0, 0.08)', // 2
-    '0px 6px 12px rgba(0, 0, 0, 0.1)', // 3
-    '0px 8px 16px rgba(0, 0, 0, 0.12)', // 4
-    '0px 10px 20px rgba(0, 0, 0, 0.14)', // 5
-    'none', // 6
-    'none', // 7
-    'none', // 8
-    'none', // 9
-    'none', // 10
-    'none', // 11
-    'none', // 12
-    'none', // 13
-    'none', // 14
-    'none', // 15
-    'none', // 16
-    'none', // 17
-    'none', // 18
-    'none', // 19
-    'none', // 20
-    'none', // 21
-    'none', // 22
-    'none', // 23
-    'none'  // 24
-  ],
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: '8px',
-          padding: '8px 20px',
+          borderRadius: 8,
+          padding: '10px 24px',
+          fontSize: '0.9375rem',
           boxShadow: 'none',
-          transition: 'all 0.25s ease-in-out',
           '&:hover': {
-            transform: 'translateY(-2px)',
+            boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
           },
         },
         contained: {
           '&:hover': {
-            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.15)',
+            boxShadow: '0 6px 12px rgba(0,0,0,0.15)',
           },
-        },
-        containedPrimary: {
-          background: `linear-gradient(135deg, ${primaryColor.light} 0%, ${primaryColor.dark} 100%)`,
-        },
-        containedSecondary: {
-          background: `linear-gradient(135deg, ${secondaryColor.light} 0%, ${secondaryColor.main} 100%)`,
-        },
-        outlined: {
-          borderWidth: '1.5px',
         },
       },
     },
@@ -184,28 +134,8 @@ const themeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           overflow: 'hidden',
-          borderRadius: '12px',
-          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.08)',
-          transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-          '&:hover': {
-            transform: 'translateY(-4px)',
-            boxShadow: '0px 8px 30px rgba(0, 0, 0, 0.12)',
-          },
-        },
-      },
-    },
-    MuiContainer: {
-      styleOverrides: {
-        root: {
-          paddingLeft: '24px',
-          paddingRight: '24px',
-        },
-      },
-    },
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 4px 8px rgba(0,0,0,0.05)',
+          border: `1px solid ${neutral.lightest}`,
         },
       },
     },
@@ -213,7 +143,12 @@ const themeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: '8px',
+            '&.Mui-focused fieldset': {
+              borderColor: primary.main,
+            },
+          },
+          '& .MuiInputLabel-root.Mui-focused': {
+            color: primary.main,
           },
         },
       },
@@ -221,15 +156,11 @@ const themeOptions: ThemeOptions = {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          backgroundColor: '#FFFFFF',
+          borderRadius: 8,
         },
       },
     },
   },
-};
-
-// Create the theme
-let theme = createTheme(themeOptions);
-theme = responsiveFontSizes(theme);
+});
 
 export default theme;
