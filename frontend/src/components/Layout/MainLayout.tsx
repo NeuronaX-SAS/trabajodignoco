@@ -118,9 +118,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <HideOnScroll>
         <AppBar position="sticky" elevation={0} sx={{ 
           background: 'linear-gradient(135deg, #733A19 0%, #5C2E14 100%)',
-          py: 1
+          py: { xs: 0.5, sm: 1 }  // Reduced padding on extra small screens
         }}>
-          <Toolbar sx={{ justifyContent: 'space-between' }}>
+          <Toolbar sx={{ 
+            justifyContent: 'space-between', 
+            minHeight: { xs: '56px', sm: '64px' },  // Explicit min-height for mobile
+            px: { xs: 1, sm: 2 }  // Less horizontal padding on mobile
+          }}>
             {/* Logo and Brand - Centered on mobile */}
             <Box sx={{ 
               display: 'flex', 
@@ -132,13 +136,18 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 <Image
                   src="/ICONO (5).png"
                   alt="Trabajo Digno Logo"
-                  width={40}
-                  height={40}
-                  style={{ borderRadius: '50%', background: '#BFAF8F', padding: 4, objectFit: 'cover' }}
+                  width={isMobile ? 32 : 40}  // Smaller logo on mobile
+                  height={isMobile ? 32 : 40}
+                  style={{ 
+                    borderRadius: '50%', 
+                    background: '#BFAF8F', 
+                    padding: isMobile ? 3 : 4,
+                    objectFit: 'cover' 
+                  }}
                   priority
                 />
                 <Typography 
-                  variant="h6" 
+                  variant={isMobile ? "subtitle1" : "h6"}  // Smaller text on mobile
                   component={Link} 
                   href="/"
                   sx={{ 
@@ -148,7 +157,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                     color: '#F2F0F0',
                     display: 'flex',
                     alignItems: 'center',
-                    ml: isMobile ? 0 : 2
+                    ml: isMobile ? 0 : 2,
+                    fontSize: { xs: '1rem', sm: '1.25rem' } // Explicit font size control
                   }}
                 >
                   Trabajo<Box component="span" sx={{ color: '#BFAF8F' }}>Digno</Box>
@@ -260,6 +270,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 color="inherit" 
                 aria-label="menu"
                 onClick={toggleDrawer}
+                sx={{ 
+                  position: 'absolute',
+                  right: 8,
+                  p: 1  // Reduced padding for the button itself
+                }}
               >
                 <MenuIcon />
               </IconButton>
