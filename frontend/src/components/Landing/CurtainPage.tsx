@@ -1,8 +1,7 @@
-'use client';
 import React from 'react';
 import { Container, Box, Typography, TextField, Button, Link } from '@mui/material';
 
-const CurtainPage: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
+const CurtainPage: React.FC = () => {
   return (
     <Container
       maxWidth={false} // Use full width
@@ -18,10 +17,6 @@ const CurtainPage: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
         py: 4, // Add some vertical padding
       }}
     >
-      {/* Close Button */}
-      {onClose && (
-        <Button onClick={onClose} sx={{ position: 'absolute', top: 24, right: 24, color: 'white', fontWeight: 'bold', fontSize: 20, zIndex: 10 }}>X</Button>
-      )}
       <Box sx={{ maxWidth: 'md', mx: 'auto' }}> {/* Center content */}
         <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', mb: 3 }}>
           Tu Voz, Tu Poder: Defendemos Tus Derechos Laborales en Colombia
@@ -49,7 +44,6 @@ const CurtainPage: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
             borderRadius: 2, // Rounded corners
             mb: 4, // Margin below the form
           }}
-          onSubmit={e => { e.preventDefault(); if (onClose) onClose(); }}
         >
           <Typography variant="h6" sx={{ mb: 1 }}>
             Comparte tu contacto para iniciar el camino hacia la defensa de tus derechos.
