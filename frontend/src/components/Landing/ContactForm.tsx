@@ -23,6 +23,8 @@ interface FormValues {
   EMAIL: string; // Corresponds to Mailchimp EMAIL merge tag (Required)
   MMERGE2: string; // Corresponds to Mailchimp MMERGE2 merge tag (Phone)
   MMERGE7: string; // Corresponds to Mailchimp MMERGE7 merge tag (Message)
+  MMERGE8: string; // New: Category of support
+  termsAccepted: boolean; // New: Consent
 }
 
 interface FormErrors {
@@ -39,7 +41,9 @@ const ContactForm: React.FC = () => {
     FNAME: '',
     EMAIL: '',
     MMERGE2: '',
-    MMERGE7: ''
+    MMERGE7: '',
+    MMERGE8: '',
+    termsAccepted: false
   };
 
   const [formValues, setFormValues] = useState<FormValues>(initialValues);
@@ -155,6 +159,24 @@ const ContactForm: React.FC = () => {
                   }}
                 />
                 
+                <FormControl fullWidth required sx={{ gridColumn: 'span 2' }}>
+                  <InputLabel id="category-label">Tipo de ayuda legal</InputLabel>
+                  <Select
+                    labelId="category-label"
+                    name="MMERGE8"
+                    value={formValues.MMERGE8}
+                    label="Tipo de ayuda legal"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="">Selecciona una opción</MenuItem>
+                    <MenuItem value="Despido injustificado">Despido injustificado</MenuItem>
+                    <MenuItem value="Acoso laboral">Acoso laboral</MenuItem>
+                    <MenuItem value="Liquidación">Liquidación</MenuItem>
+                    <MenuItem value="Contratación por servicios">Contratación por servicios</MenuItem>
+                    <MenuItem value="Otro">Otro</MenuItem>
+                  </Select>
+                  <FormHelperText>Selecciona el tipo de apoyo que necesitas</FormHelperText>
+                </FormControl>
               </div>
               
               <TextField
@@ -177,6 +199,12 @@ const ContactForm: React.FC = () => {
                     color: '#DE735B',
                   },
                 }}
+              />
+              
+              <FormControlLabel
+                control={<Checkbox name="termsAccepted" checked={formValues.termsAccepted} onChange={e => setFormValues({ ...formValues, termsAccepted: e.target.checked })} required />}
+                label={<span>Acepto el <a href="/privacidad" target="_blank" rel="noopener noreferrer">tratamiento de datos</a></span>}
+                sx={{ mb: 2 }}
               />
               
               {/* Hidden Mailchimp Input */}

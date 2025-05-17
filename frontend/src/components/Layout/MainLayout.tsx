@@ -28,6 +28,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { logout } from '../../lib/redux/slices/authSlice';
 import { RootState, AppDispatch } from '../../lib/redux/store';
+import CurtainPage from '../Landing/CurtainPage';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -53,6 +54,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [showCurtain, setShowCurtain] = useState(true);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -113,135 +115,52 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      {showCurtain && (
+        <Box sx={{
+          position: 'fixed',
+          zIndex: 2000,
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          bgcolor: 'rgba(26,35,126,0.98)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <CurtainPage onClose={() => setShowCurtain(false)} />
+        </Box>
+      )}
       <HideOnScroll>
         <AppBar position="sticky" elevation={0} sx={{ 
           background: 'linear-gradient(135deg, #DE735B 0%, #C35D45 100%)',
           py: 1
         }}>
           <Toolbar sx={{ justifyContent: 'space-between' }}>
-            {/* Logo and Brand */}
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box sx={{ width: 40, height: 40, mr: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image 
-                  src="/fleur-de-lis.svg" 
-                  alt="TrabajoDigno.co Logo" 
-                  width={30} 
-                  height={30}
-                  priority
-                />
-              </Box>
-              <Typography 
-                variant="h6" 
-                component={Link} 
-                href="/"
-                sx={{ 
-                  fontWeight: 700, 
-                  letterSpacing: '0.5px',
-                  textDecoration: 'none',
-                  color: 'white',
-                  display: 'flex',
-                  alignItems: 'center' 
-                }}
-              >
+            {/* Social Buttons */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              {/* TODO: Add real links/icons */}
+              <Button sx={{ minWidth: 0, color: 'white' }}>FB</Button>
+              <Button sx={{ minWidth: 0, color: 'white' }}>IG</Button>
+              <Button sx={{ minWidth: 0, color: 'white' }}>TT</Button>
+            </Box>
+            {/* Centered Logo */}
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+              <Image src="/fleur-de-lis.svg" alt="TrabajoDigno.co Logo" width={40} height={40} priority />
+              <Typography variant="h6" component={Link} href="/" sx={{ fontWeight: 700, letterSpacing: '0.5px', textDecoration: 'none', color: 'white', mt: 0.5 }}>
                 TrabajoDigno<Box component="span" sx={{ color: 'rgba(255,255,255,0.9)' }}>.co</Box>
               </Typography>
+              <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
+                <Button component={Link} href="/about" sx={{ color: 'white' }}>Nosotros</Button>
+                <Button component={Link} href="/news" sx={{ color: 'white' }}>Noticias</Button>
+                <Button onClick={scrollToContact} sx={{ color: 'white' }}>Contacto</Button>
+              </Box>
             </Box>
-
-            {/* Desktop Navigation */}
-            {!isMobile && (
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                {navLinks.map((link, index) => (
-                  <React.Fragment key={index}>
-                    {link.path ? (
-                      <Button 
-                        component={Link} 
-                        href={link.path}
-                        sx={getNavButtonStyle(link.path)}
-                      >
-                        {link.title}
-                      </Button>
-                    ) : (
-                      <Button 
-                        onClick={link.onClick}
-                        sx={getNavButtonStyle('')}
-                      >
-                        {link.title}
-                      </Button>
-                    )}
-                  </React.Fragment>
-                ))}
-              </Box>
-            )}
-
-            {/* Auth Buttons or User Menu */}
-            {!isMobile && (
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                {isAuthenticated ? (
-                  <>
-                    <Button 
-                      variant="outlined"
-                      color="inherit"
-                      component={Link} 
-                      href="/dashboard"
-                      sx={{ 
-                        mr: 1.5, 
-                        borderColor: 'rgba(255,255,255,0.5)',
-                        '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.1)' }
-                      }}
-                    >
-                      Dashboard
-                    </Button>
-                    <Button 
-                      color="inherit" 
-                      onClick={handleLogout}
-                      sx={{ backgroundColor: 'rgba(0,0,0,0.1)', '&:hover': { backgroundColor: 'rgba(0,0,0,0.2)' } }}
-                    >
-                      Cerrar Sesión
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Button 
-                      variant="outlined"
-                      color="inherit"
-                      onClick={scrollToContact}
-                      sx={{ 
-                        mr: 1.5, 
-                        borderColor: 'rgba(255,255,255,0.5)',
-                        '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.1)' }
-                      }}
-                    >
-                      Iniciar Sesión
-                    </Button>
-                    <Button 
-                      variant="contained"
-                      color="secondary"
-                      onClick={scrollToContact}
-                      sx={{ 
-                        backgroundColor: 'white', 
-                        color: '#DE735B',
-                        fontWeight: 600,
-                        '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' } 
-                      }}
-                    >
-                      Registrarse
-                    </Button>
-                  </>
-                )}
-              </Box>
-            )}
-
-            {/* Mobile Menu Button */}
-            {isMobile && (
-              <IconButton 
-                edge="end" 
-                color="inherit" 
-                aria-label="menu"
-                onClick={toggleDrawer}
-              >
-                <MenuIcon />
-              </IconButton>
-            )}
+            {/* Auth Buttons */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Button variant="text" color="inherit" component={Link} href="/login" sx={{ color: 'white', opacity: 0.7 }}>Iniciar Sesión</Button>
+              <Button variant="contained" color="secondary" component={Link} href="/register" sx={{ backgroundColor: 'white', color: '#DE735B', fontWeight: 600, opacity: 0.9, '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' } }}>Registrarse</Button>
+            </Box>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
@@ -370,7 +289,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       </Drawer>
 
       <Container component="main" sx={{ mt: 4, mb: 4, flexGrow: 1 }}>
-        {children}
+        {!showCurtain && children}
       </Container>
 
     </Box>
