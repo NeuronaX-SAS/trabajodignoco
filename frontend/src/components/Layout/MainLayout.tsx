@@ -128,41 +128,38 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               width: isMobile ? '100%' : 'auto',
               justifyContent: isMobile ? 'center' : 'flex-start'
             }}>
-              <Box sx={{ 
-                width: 40, 
-                height: 40, 
-                mr: 1, 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center',
-                position: isMobile ? 'relative' : 'static',
-                zIndex: 1
-              }}>
-                <Image 
-                  src="/trabajodigno-logo.svg" 
-                  alt="Trabajo Digno Logo" 
-                  width={30} 
-                  height={30}
-                  priority
-                />
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <img src="/ICONO (5).png" alt="Trabajo Digno Logo" width={36} height={36} style={{ borderRadius: '50%', background: '#BFAF8F', padding: 2 }} />
+                <img src="/ISOTIPO (5).png" alt="Trabajo Digno Isotipo" width={28} height={28} style={{ marginLeft: 4 }} />
+                <Typography 
+                  variant="h6" 
+                  component={Link} 
+                  href="/"
+                  sx={{ 
+                    fontWeight: 700, 
+                    letterSpacing: '0.5px',
+                    textDecoration: 'none',
+                    color: '#F2F0F0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    ml: 2
+                  }}
+                >
+                  Trabajo<Box component="span" sx={{ color: '#BFAF8F' }}>Digno</Box>
+                </Typography>
+                {/* Social Media Icons */}
+                <Box sx={{ display: 'flex', alignItems: 'center', ml: 3, gap: 1 }}>
+                  <a href="https://www.instagram.com/trabajodigno.col/" target="_blank" rel="noopener noreferrer">
+                    <img src="/logos/instagram.svg" alt="Instagram" width={22} height={22} />
+                  </a>
+                  <a href="https://www.tiktok.com/@trabajodigno.col" target="_blank" rel="noopener noreferrer">
+                    <img src="/logos/tiktok.svg" alt="TikTok" width={22} height={22} />
+                  </a>
+                  <a href="https://www.facebook.com/profile.php?id=61575746772724" target="_blank" rel="noopener noreferrer">
+                    <img src="/logos/facebook.svg" alt="Facebook" width={22} height={22} />
+                  </a>
+                </Box>
               </Box>
-              <Typography 
-                variant="h6" 
-                component={Link} 
-                href="/"
-                sx={{ 
-                  fontWeight: 700, 
-                  letterSpacing: '0.5px',
-                  textDecoration: 'none',
-                  color: '#F2F0F0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  position: isMobile ? 'relative' : 'static',
-                  zIndex: 1
-                }}
-              >
-                Trabajo<Box component="span" sx={{ color: '#BFAF8F' }}>Digno</Box>
-              </Typography>
             </Box>
 
             {/* Desktop Navigation */}
@@ -386,9 +383,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         </List>
       </Drawer>
 
-      <Container component="main" sx={{ mt: 4, mb: 4, flexGrow: 1 }}>
-        {children}
-      </Container>
+      <Box component="main" sx={{ flexGrow: 1, width: '100%', p: 0, m: 0 }}>{children}</Box>
 
     </Box>
   );
