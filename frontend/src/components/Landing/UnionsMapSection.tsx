@@ -5,48 +5,64 @@ import { motion } from 'framer-motion';
 import { Box, Typography, Button, Card, CardContent } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-// Sample union data
+// Replace unionData with real union info for Bogotá:
 const unionData = [
   {
     id: 'u1',
-    name: 'Sindicato Nacional de Trabajadores',
-    location: 'Bogotá',
-    coordinates: { lat: 4.624335, lng: -74.063644 },
-    type: 'Industrial',
-    members: 3500
+    name: 'AGRECONDUCTORES',
+    address: 'Carrera 37 No. 25 A - 33, Bogotá',
+    phone: '2699306',
+    coordinates: { x: 410, y: 320 }, // Approximate on SVG
   },
   {
     id: 'u2',
-    name: 'Central Unitaria de Trabajadores',
-    location: 'Medellín',
-    coordinates: { lat: 6.244338, lng: -75.573553 },
-    type: 'Confederación',
-    members: 12000
+    name: 'ASOGOBIERNO',
+    address: 'Calle 12B No. 8-23 Oficina 501, Bogotá',
+    phone: '2820188',
+    coordinates: { x: 420, y: 330 },
   },
   {
     id: 'u3',
-    name: 'Unión de Trabajadores Agrícolas',
-    location: 'Cali',
-    coordinates: { lat: 3.451647, lng: -76.532024 },
-    type: 'Sectorial',
-    members: 4200
+    name: 'SEPUCADIS',
+    address: 'Carrera 8 No. 1 C – 50 sur, Bogotá',
+    phone: '3387000 Ext. 5251',
+    coordinates: { x: 415, y: 340 },
   },
   {
     id: 'u4',
-    name: 'Asociación de Trabajadores Informales',
-    location: 'Barranquilla',
-    coordinates: { lat: 10.963889, lng: -74.796387 },
-    type: 'Asociación',
-    members: 2100
+    name: 'SINDISTRITALES',
+    address: 'Carrera 9 No. 21 - 68, Bogotá',
+    phone: '3413587',
+    coordinates: { x: 425, y: 335 },
   },
   {
     id: 'u5',
-    name: 'Federación de Educadores',
-    location: 'Bucaramanga',
-    coordinates: { lat: 7.119349, lng: -73.122742 },
-    type: 'Federación',
-    members: 5800
-  }
+    name: 'SINTRADISTRITALES',
+    address: 'Calle 12 B No. 6 – 82 Of. 704, Bogotá',
+    phone: '2431778',
+    coordinates: { x: 430, y: 325 },
+  },
+  {
+    id: 'u6',
+    name: 'SINTRAMUNICIPALES',
+    address: 'Calle 21 No. 8 – 62 Of. 204, Bogotá',
+    phone: '2834293',
+    coordinates: { x: 435, y: 340 },
+  },
+  {
+    id: 'u7',
+    name: 'SUNET REGIONAL BOGOTA',
+    address: 'Calle 12B No. 8-39 Of. 220 Edificio Bancoquia, Bogotá',
+    phone: '2812559 / 3107858693',
+    coordinates: { x: 420, y: 345 },
+  },
+  {
+    id: 'u8',
+    name: 'ASONAL JUDICIAL SI',
+    address: 'Av Calle 12 # 9 - 23, Piso 2 - Edificio Virrey, Bogotá',
+    phone: '312869660 / 3152486810 / 3117202245',
+    coordinates: { x: 425, y: 350 },
+  },
 ];
 
 const UnionsMapSection: React.FC = () => {
@@ -117,7 +133,7 @@ const UnionsMapSection: React.FC = () => {
                       <div className="flex items-center mt-1">
                         <LocationOnIcon sx={{ fontSize: '0.875rem' }} className={`${selectedUnion === union.id ? 'text-[#BFAF8F]' : 'text-[#733A19]'} mr-1`} />
                         <span className={`text-xs ${selectedUnion === union.id ? 'text-[#BFAF8F]' : 'text-gray-500'}`}>
-                          {union.location}
+                          {union.address}
                         </span>
                       </div>
                     </div>
@@ -142,12 +158,8 @@ const UnionsMapSection: React.FC = () => {
                     >
                       <div className="grid grid-cols-2 gap-2 text-sm mb-3">
                         <div>
-                          <span className="text-[#BFAF8F] block text-xs">Tipo</span>
-                          <span>{union.type}</span>
-                        </div>
-                        <div>
-                          <span className="text-[#BFAF8F] block text-xs">Miembros</span>
-                          <span>{union.members.toLocaleString()}</span>
+                          <span className="text-[#BFAF8F] block text-xs">Teléfono</span>
+                          <span>{union.phone}</span>
                         </div>
                       </div>
                       <Button
@@ -209,31 +221,18 @@ const UnionsMapSection: React.FC = () => {
                   </svg>
                   
                   {/* Union location markers */}
-                  {unionData.map((union, index) => (
-                    <div
+                  {unionData.map((union, idx) => (
+                    <circle
                       key={union.id}
-                      className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all ${
-                        selectedUnion === union.id ? 'z-20' : 'z-10'
-                      }`}
-                      style={{
-                        left: `${(union.coordinates.lng + 80) * 3}px`,  // Simple mapping for demo
-                        top: `${(union.coordinates.lat - 2) * 60}px`,   // Simple mapping for demo
-                      }}
-                    >
-                      <div 
-                        className={`w-4 h-4 rounded-full ${
-                          selectedUnion === union.id 
-                            ? 'bg-[#733A19] ring-4 ring-[#733A19]/30 animate-pulse' 
-                            : 'bg-[#153959] hover:bg-[#733A19]'
-                        }`}
-                      ></div>
-                      
-                      {selectedUnion === union.id && (
-                        <div className="absolute mt-2 bg-white rounded-md shadow-lg p-2 text-xs font-medium text-[#0E1013] whitespace-nowrap">
-                          {union.name}
-                        </div>
-                      )}
-                    </div>
+                      cx={union.coordinates.x}
+                      cy={union.coordinates.y}
+                      r={selectedUnion === union.id ? 14 : 10}
+                      fill={selectedUnion === union.id ? '#733A19' : '#BFAF8F'}
+                      stroke="#153959"
+                      strokeWidth={selectedUnion === union.id ? 4 : 2}
+                      style={{ cursor: 'pointer', transition: 'all 0.2s' }}
+                      onClick={() => setSelectedUnion(union.id === selectedUnion ? null : union.id)}
+                    />
                   ))}
                 </div>
                 
@@ -257,6 +256,35 @@ const UnionsMapSection: React.FC = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* After the SVG with union markers, add this popup: */}
+      {selectedUnion && (() => {
+        const union = unionData.find(u => u.id === selectedUnion);
+        if (!union) return null;
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              left: union.coordinates.x,
+              top: union.coordinates.y - 60,
+              background: 'white',
+              border: '1px solid #BFAF8F',
+              borderRadius: 8,
+              padding: '12px 18px',
+              boxShadow: '0 4px 16px rgba(115,58,25,0.10)',
+              zIndex: 10,
+              minWidth: 220,
+            }}
+          >
+            <div style={{ fontWeight: 700, color: '#733A19', marginBottom: 4 }}>{union.name}</div>
+            <div style={{ fontSize: 14, color: '#153959', marginBottom: 2 }}>{union.address}</div>
+            <div style={{ fontSize: 13, color: '#5C2E14' }}>Tel: {union.phone}</div>
+            <Button size="small" sx={{ mt: 1, color: '#733A19', fontWeight: 600 }} onClick={() => setSelectedUnion(null)}>
+              Cerrar
+            </Button>
+          </div>
+        );
+      })()}
     </section>
   );
 };
