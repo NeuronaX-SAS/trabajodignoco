@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Box, Typography, Modal, IconButton, Button } from '@mui/material';
+import { Box, Typography, Modal, IconButton, Button, Chip } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { marked } from 'marked';
 
 // Sample news data - in a real application, this would come from an API or CMS
 const newsItems = [
@@ -40,9 +41,18 @@ const newsItems = [
   }
 ];
 
+const categories = ['Todos', ...Array.from(new Set(newsItems.map(item => item.category)))];
+const POSTS_PER_PAGE = 6;
+
 const NewsSection: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<typeof newsItems[0] | null>(null);
+  const [category, setCategory] = useState('Todos');
+  const [page, setPage] = useState(1);
+
+  const filtered = category === 'Todos' ? newsItems : newsItems.filter(item => item.category === category);
+  const totalPages = Math.ceil(filtered.length / POSTS_PER_PAGE);
+  const paginated = filtered.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
 
   const handleOpen = (item: typeof newsItems[0]) => {
     setSelected(item);
@@ -52,13 +62,18 @@ const NewsSection: React.FC = () => {
     setOpen(false);
     setSelected(null);
   };
-
   const handleContactClick = () => {
     const contactFormElement = document.getElementById('contact-form');
     if (contactFormElement) {
       contactFormElement.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  const handleCategory = (cat: string) => {
+    setCategory(cat);
+    setPage(1);
+  };
+  const handlePrev = () => setPage(p => Math.max(1, p - 1));
+  const handleNext = () => setPage(p => Math.min(totalPages, p + 1));
 
   return (
     <section id="news" className="py-20 bg-white relative overflow-hidden">
@@ -68,7 +83,7 @@ const NewsSection: React.FC = () => {
       </div>
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -85,9 +100,22 @@ const NewsSection: React.FC = () => {
             con conocimientos prácticos sobre sus derechos y herramientas para la acción colectiva.
           </p>
         </motion.div>
+        {/* Category Filter */}
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2, mb: 6 }}>
+          {categories.map(cat => (
+            <Chip
+              key={cat}
+              label={cat}
+              clickable
+              color={cat === category ? 'primary' : 'default'}
+              onClick={() => handleCategory(cat)}
+              sx={{ fontWeight: 600, fontSize: 16, px: 2, bgcolor: cat === category ? '#733A19' : '#F2F0F0', color: cat === category ? 'white' : '#733A19', '&:hover': { bgcolor: '#BFAF8F' } }}
+            />
+          ))}
+        </Box>
         {/* Blog Grid */}
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' }, gap: 4 }}>
-          {newsItems.map((item, index) => (
+          {paginated.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 20 }}
@@ -137,6 +165,18 @@ const NewsSection: React.FC = () => {
             </motion.div>
           ))}
         </Box>
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2, mt: 6 }}>
+            <Button variant="outlined" onClick={handlePrev} disabled={page === 1} sx={{ fontWeight: 600 }}>
+              Anterior
+            </Button>
+            <Typography variant="body1" sx={{ mx: 2 }}>{page} / {totalPages}</Typography>
+            <Button variant="outlined" onClick={handleNext} disabled={page === totalPages} sx={{ fontWeight: 600 }}>
+              Siguiente
+            </Button>
+          </Box>
+        )}
         {/* Modal for full article */}
         <Modal open={open} onClose={handleClose} aria-labelledby="blog-modal-title" aria-describedby="blog-modal-content">
           <Box sx={{ maxWidth: 600, bgcolor: 'white', mx: 'auto', my: 8, borderRadius: 3, boxShadow: 24, p: 4, outline: 'none', position: 'relative' }}>
@@ -154,7 +194,9 @@ const NewsSection: React.FC = () => {
                 </Box>
                 <Typography variant="caption" color="text.secondary" sx={{ mb: 0.5 }}>{selected.date} {selected.author && <>· {selected.author}</>}</Typography>
                 <Typography variant="h5" fontWeight={700} sx={{ mb: 2, color: '#0E1013' }}>{selected.title}</Typography>
-                <Typography variant="body1" color="text.primary" sx={{ mb: 3 }}>{selected.content}</Typography>
+                <Box sx={{ mb: 3 }}>
+                  <div dangerouslySetInnerHTML={{ __html: marked.parse(selected.content) }} />
+                </Box>
               </>
             )}
           </Box>
