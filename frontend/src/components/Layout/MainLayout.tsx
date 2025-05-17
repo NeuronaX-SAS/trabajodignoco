@@ -86,9 +86,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   // Navigation links
   const navLinks = [
     { title: 'Inicio', path: '/' },
-    { title: 'Nosotros', path: '/#about' },
-    { title: 'Contacto', onClick: scrollToContact },
+    { title: 'Quiénes Somos', path: '/#about' },
+    { title: 'Recursos', path: '/#resources' },
+    { title: 'Formación', path: '/#education' },
     { title: 'Noticias', path: '/#news' },
+    { title: 'Contacto', onClick: scrollToContact },
   ];
 
   // Button style based on active state
@@ -115,7 +117,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <HideOnScroll>
         <AppBar position="sticky" elevation={0} sx={{ 
-          background: 'linear-gradient(135deg, #DE735B 0%, #C35D45 100%)',
+          background: 'linear-gradient(135deg, #733A19 0%, #5C2E14 100%)',
           py: 1
         }}>
           <Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -137,8 +139,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 zIndex: 1
               }}>
                 <Image 
-                  src="/fleur-de-lis.svg" 
-                  alt="TrabajoDigno.co Logo" 
+                  src="/trabajodigno-logo.svg" 
+                  alt="Trabajo Digno Logo" 
                   width={30} 
                   height={30}
                   priority
@@ -152,14 +154,14 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                   fontWeight: 700, 
                   letterSpacing: '0.5px',
                   textDecoration: 'none',
-                  color: 'white',
+                  color: '#F2F0F0',
                   display: 'flex',
                   alignItems: 'center',
                   position: isMobile ? 'relative' : 'static',
                   zIndex: 1
                 }}
               >
-                TrabajoDigno<Box component="span" sx={{ color: 'rgba(255,255,255,0.9)' }}>.co</Box>
+                Trabajo<Box component="span" sx={{ color: '#BFAF8F' }}>Digno</Box>
               </Typography>
             </Box>
 
@@ -201,16 +203,16 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                       href="/dashboard"
                       sx={{ 
                         mr: 1.5, 
-                        borderColor: 'rgba(255,255,255,0.5)',
-                        '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.1)' }
+                        borderColor: 'rgba(242,240,240,0.5)',
+                        '&:hover': { borderColor: '#F2F0F0', backgroundColor: 'rgba(242,240,240,0.1)' }
                       }}
                     >
-                      Dashboard
+                      Mi Espacio
                     </Button>
                     <Button 
                       color="inherit" 
                       onClick={handleLogout}
-                      sx={{ backgroundColor: 'rgba(0,0,0,0.1)', '&:hover': { backgroundColor: 'rgba(0,0,0,0.2)' } }}
+                      sx={{ backgroundColor: 'rgba(14,16,19,0.2)', '&:hover': { backgroundColor: 'rgba(14,16,19,0.3)' } }}
                     >
                       Cerrar Sesión
                     </Button>
@@ -223,24 +225,23 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                       onClick={scrollToContact}
                       sx={{ 
                         mr: 1.5, 
-                        borderColor: 'rgba(255,255,255,0.5)',
-                        '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.1)' }
+                        borderColor: 'rgba(242,240,240,0.5)',
+                        '&:hover': { borderColor: '#F2F0F0', backgroundColor: 'rgba(242,240,240,0.1)' }
                       }}
                     >
-                      Iniciar Sesión
+                      Participa
                     </Button>
                     <Button 
                       variant="contained"
-                      color="secondary"
-                      onClick={scrollToContact}
                       sx={{ 
-                        backgroundColor: 'white', 
-                        color: '#DE735B',
+                        backgroundColor: '#BFAF8F', 
+                        color: '#0E1013',
                         fontWeight: 600,
-                        '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' } 
+                        '&:hover': { backgroundColor: '#D0C7AF' } 
                       }}
+                      onClick={scrollToContact}
                     >
-                      Registrarse
+                      Únete
                     </Button>
                   </>
                 )}

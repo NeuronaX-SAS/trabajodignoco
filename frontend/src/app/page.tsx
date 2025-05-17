@@ -1,8 +1,10 @@
 import { Box } from '@mui/material';
 import HeroSection from '@/components/Landing/HeroSection';
-import ContactForm from '@/components/Landing/ContactForm';
 import AboutSection from '@/components/Landing/AboutSection';
+import ResourcesSection from '@/components/Landing/ResourcesSection';
+import FormationSection from '@/components/Landing/FormationSection';
 import NewsSection from '@/components/Landing/NewsSection';
+import ContactForm from '@/components/Landing/ContactForm';
 import UnionsMapSection from '@/components/Landing/UnionsMapSection';
 import CommunityCallToAction from '@/components/Landing/CommunityCallToAction';
 
@@ -11,9 +13,11 @@ export default function HomePage() {
     <Box>
       <HeroSection />
       <AboutSection />
-      <ContactForm />
+      <ResourcesSection />
+      <FormationSection />
       <NewsSection />
       <UnionsMapSection />
+      <ContactForm />
       <CommunityCallToAction />
     </Box>
   );
