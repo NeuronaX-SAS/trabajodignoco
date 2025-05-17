@@ -156,9 +156,9 @@ const ContactForm: React.FC = () => {
         </motion.div>
 
         <div className="max-w-5xl mx-auto">
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+          <Grid container spacing={4}>
             {/* Form Column */}
-            <Box sx={{ width: { xs: '100%', md: '58%' } }}>
+            <Grid size={{ xs: 12, md: 7 }}>
               <Paper 
                 elevation={3} 
                 sx={{ 
@@ -415,10 +415,10 @@ const ContactForm: React.FC = () => {
                   </form>
                 )}
               </Paper>
-            </Box>
+            </Grid>
 
             {/* Information Column */}
-            <Box sx={{ width: { xs: '100%', md: '38%' } }}>
+            <Grid size={{ xs: 12, md: 5 }}>
               <div className="bg-[#BFAF8F]/10 p-6 rounded-md border border-[#BFAF8F]/30 h-full">
                 <h3 className="text-xl font-bold text-[#733A19] mb-4">
                   ¿Por qué es importante compartir tu experiencia?
@@ -472,8 +472,8 @@ const ContactForm: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </Box>
-          </Box>
+            </Grid>
+          </Grid>
           
           {/* Educational resources section */}
           <div className="mt-16">
