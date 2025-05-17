@@ -28,7 +28,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { logout } from '../../lib/redux/slices/authSlice';
 import { RootState, AppDispatch } from '../../lib/redux/store';
-import CurtainPage from '../Landing/CurtainPage';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -54,7 +53,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [showCurtain, setShowCurtain] = useState(true);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -115,27 +113,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      {showCurtain && (
-        <Box sx={{
-          position: 'fixed',
-          zIndex: 2000,
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          bgcolor: 'rgba(26,35,126,0.98)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-          <CurtainPage onClose={() => setShowCurtain(false)} />
-        </Box>
-      )}
       <HideOnScroll>
-        <AppBar position="sticky" elevation={0} sx={{ 
-          background: 'linear-gradient(135deg, #DE735B 0%, #C35D45 100%)',
-          py: 1
-        }}>
+        <AppBar position="sticky" elevation={0} sx={{ background: 'linear-gradient(135deg, #DE735B 0%, #C35D45 100%)', py: 1 }}>
           <Toolbar sx={{ justifyContent: 'space-between' }}>
             {/* Social Buttons */}
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -289,7 +268,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       </Drawer>
 
       <Container component="main" sx={{ mt: 4, mb: 4, flexGrow: 1 }}>
-        {!showCurtain && children}
+        {children}
       </Container>
 
     </Box>
