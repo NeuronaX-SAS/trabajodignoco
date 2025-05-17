@@ -155,8 +155,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               px: { xs: 2, sm: 4, md: 6 },
               minHeight: { xs: 56, sm: 64 },
               flexWrap: 'wrap',
-              overflowX: 'auto',
+              overflow: 'hidden',
               width: '100%',
+              maxWidth: '100%',
+              boxSizing: 'border-box'
             }}
           >
             {/* Logo and Brand - Centered on mobile */}
@@ -165,12 +167,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               alignItems: 'center',
               width: isMobile ? '100%' : 'auto',
               justifyContent: isMobile ? 'center' : 'flex-start',
-              minWidth: 0,
-              flex: '1 1 0%',
-              flexWrap: 'wrap',
               overflow: 'hidden',
+              flexShrink: 1,
+              pr: 2
             }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, minWidth: 0 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, overflow: 'hidden' }}>
                 <Box 
                   component={Link}
                   href="/"
@@ -179,7 +180,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                     alignItems: 'center',
                     textDecoration: 'none',
                     gap: 2,
-                    minWidth: 0,
+                    overflow: 'hidden',
+                    flexShrink: 1
                   }}
                 >
                   <Box 
@@ -192,7 +194,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                       justifyContent: 'center',
                       boxShadow: isScrolled ? '0 4px 8px rgba(0,0,0,0.2)' : 'none',
                       transition: 'all 0.3s ease',
-                      minWidth: 0,
+                      flexShrink: 0,
+                      width: isScrolled ? 36 : 40,
+                      height: isScrolled ? 36 : 40
                     }}
                   >
                     <Image
@@ -200,7 +204,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                       alt="Trabajo Digno Logo"
                       width={isScrolled ? 36 : 40}
                       height={isScrolled ? 36 : 40}
-                      style={{ objectFit: 'cover', minWidth: 0 }}
+                      style={{ objectFit: 'cover' }}
                       priority
                     />
                   </Box>
@@ -214,14 +218,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                       alignItems: 'center',
                       fontSize: isScrolled ? '1.1rem' : '1.25rem',
                       transition: 'all 0.3s ease',
-                      minWidth: 0,
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
-                      maxWidth: { xs: 120, sm: 180, md: 220 },
+                      flexShrink: 1
                     }}
                   >
-                    Trabajo<Box component="span" sx={{ color: '#BFAF8F', minWidth: 0 }}>Digno</Box>
+                    Trabajo<Box component="span" sx={{ color: '#BFAF8F' }}>Digno</Box>
                   </Typography>
                 </Box>
                 {/* Social Media Icons - Only show on desktop */}
@@ -234,8 +237,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                       gap: 1.5,
                       opacity: isScrolled ? 0.9 : 0.8,
                       transition: 'all 0.3s ease',
-                      minWidth: 0,
-                      flexWrap: 'wrap',
+                      flexShrink: 0
                     }}
                   >
                     {[
@@ -268,10 +270,18 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                             opacity: 1,
                             transform: 'translateY(-2px)'
                           },
-                          flexWrap: 'wrap',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
                         }}
                       >
-                        <img src={social.icon} alt={social.alt} width={22} height={22} style={{ minWidth: 0 }} />
+                        <img 
+                          src={social.icon} 
+                          alt={social.alt} 
+                          width={22} 
+                          height={22} 
+                          style={{ width: 22, height: 22 }} 
+                        />
                       </Box>
                     ))}
                   </Box>

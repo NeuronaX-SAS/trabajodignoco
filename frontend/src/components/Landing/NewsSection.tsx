@@ -16,7 +16,7 @@ const newsItems = [
     content: 'Guía práctica sobre los derechos laborales más importantes que todo trabajador colombiano debe conocer para defender su dignidad en el trabajo. (Aquí iría el contenido completo del artículo, puedes expandirlo en el futuro)',
     date: '15 Jun 2023',
     author: 'Equipo Trabajo Digno',
-    imageUrl: '/placeholder-news-1.jpg',
+    imageUrl: '/organization-image.jpg',
     category: 'Recursos Educativos'
   },
   {
@@ -26,7 +26,7 @@ const newsItems = [
     content: 'Los trabajadores de aplicaciones como Rappi, Uber y otras plataformas digitales tienen derechos laborales que deben ser respetados. Conoce cuáles son. (Aquí iría el contenido completo del artículo, puedes expandirlo en el futuro)',
     date: '03 May 2023',
     author: 'Redacción Trabajo Digno',
-    imageUrl: '/placeholder-news-2.jpg',
+    imageUrl: '/ICONO (5).png',
     category: 'Derechos Laborales'
   },
   {
@@ -36,7 +36,7 @@ const newsItems = [
     content: 'Guía práctica para la organización colectiva de los trabajadores: cómo fortalecer lazos de solidaridad y construir poder desde la base. (Aquí iría el contenido completo del artículo, puedes expandirlo en el futuro)',
     date: '27 Abr 2023',
     author: 'Invitado: Sindicalista',
-    imageUrl: '/placeholder-news-3.jpg',
+    imageUrl: '/organization-image.jpg',
     category: 'Organización'
   }
 ];

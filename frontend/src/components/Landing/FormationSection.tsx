@@ -18,14 +18,27 @@ const getTikTokEmbedUrl = (url: string) => {
 };
 
 const FormationSection: React.FC = () => {
-  // Ensure TikTok embed.js is loaded for best compatibility
+  // Modified approach to load TikTok videos with proper CSP handling
   useEffect(() => {
-    if (!document.querySelector('script[src="https://www.tiktok.com/embed.js"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://www.tiktok.com/embed.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
+    // Instead of loading the script dynamically which can trigger CSP issues,
+    // rely on the iframe embed which handles this better
+    const loadTikTokVideos = () => {
+      const iframes = document.querySelectorAll('.tiktok-embed-frame');
+      iframes.forEach(iframe => {
+        // Refresh iframe src to trigger load
+        if (iframe instanceof HTMLIFrameElement) {
+          const currentSrc = iframe.src;
+          iframe.src = currentSrc;
+        }
+      });
+    };
+    
+    // Load videos after component is mounted
+    loadTikTokVideos();
+    
+    // Add a small delay to ensure DOM is ready
+    const timeoutId = setTimeout(loadTikTokVideos, 1000);
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
@@ -59,13 +72,25 @@ const FormationSection: React.FC = () => {
           {tiktokVideos.map((url, idx) => (
             <div key={idx} className="aspect-[9/16] w-full rounded-2xl overflow-hidden shadow-lg bg-black flex items-center justify-center">
               <iframe
+                className="tiktok-embed-frame"
                 src={getTikTokEmbedUrl(url)}
                 width="100%"
                 height="100%"
-                allow="autoplay; encrypted-media"
+                allow="autoplay;"
                 allowFullScreen
                 title={`TikTok Video ${idx + 1}`}
-                style={{ border: 0, width: '100%', height: '100%', minHeight: 400, maxHeight: 600 }}
+                style={{ 
+                  border: 0, 
+                  maxWidth: '100%', 
+                  width: '100%', 
+                  height: '100%', 
+                  minHeight: '400px',
+                  maxHeight: '600px',
+                  aspectRatio: '9/16',
+                  borderRadius: '12px',
+                  overflow: 'hidden'
+                }}
+                sandbox="allow-scripts allow-same-origin allow-popups"
               />
             </div>
           ))}
@@ -76,6 +101,7 @@ const FormationSection: React.FC = () => {
             color="primary"
             href="https://www.tiktok.com/@trabajodigno.col"
             target="_blank"
+            rel="noopener noreferrer"
             sx={{ background: '#000', color: '#fff', fontWeight: 600, '&:hover': { background: '#222' } }}
           >
             Ver más en TikTok
