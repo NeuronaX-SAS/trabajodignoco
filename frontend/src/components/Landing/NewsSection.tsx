@@ -1,8 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { Box, Typography, Modal, IconButton, Button } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 // Sample news data - in a real application, this would come from an API or CMS
 const newsItems = [
@@ -10,7 +12,9 @@ const newsItems = [
     id: '1',
     title: 'Cartilla: Conozca sus derechos laborales fundamentales',
     excerpt: 'Guía práctica sobre los derechos laborales más importantes que todo trabajador colombiano debe conocer para defender su dignidad en el trabajo.',
+    content: 'Guía práctica sobre los derechos laborales más importantes que todo trabajador colombiano debe conocer para defender su dignidad en el trabajo. (Aquí iría el contenido completo del artículo, puedes expandirlo en el futuro)',
     date: '15 Jun 2023',
+    author: 'Equipo Trabajo Digno',
     imageUrl: '/placeholder-news-1.jpg',
     category: 'Recursos Educativos'
   },
@@ -18,7 +22,9 @@ const newsItems = [
     id: '2',
     title: 'Derechos de los trabajadores en plataformas digitales',
     excerpt: 'Los trabajadores de aplicaciones como Rappi, Uber y otras plataformas digitales tienen derechos laborales que deben ser respetados. Conoce cuáles son.',
+    content: 'Los trabajadores de aplicaciones como Rappi, Uber y otras plataformas digitales tienen derechos laborales que deben ser respetados. Conoce cuáles son. (Aquí iría el contenido completo del artículo, puedes expandirlo en el futuro)',
     date: '03 May 2023',
+    author: 'Redacción Trabajo Digno',
     imageUrl: '/placeholder-news-2.jpg',
     category: 'Derechos Laborales'
   },
@@ -26,20 +32,40 @@ const newsItems = [
     id: '3',
     title: 'Cómo organizarse colectivamente en tu lugar de trabajo',
     excerpt: 'Guía práctica para la organización colectiva de los trabajadores: cómo fortalecer lazos de solidaridad y construir poder desde la base.',
+    content: 'Guía práctica para la organización colectiva de los trabajadores: cómo fortalecer lazos de solidaridad y construir poder desde la base. (Aquí iría el contenido completo del artículo, puedes expandirlo en el futuro)',
     date: '27 Abr 2023',
+    author: 'Invitado: Sindicalista',
     imageUrl: '/placeholder-news-3.jpg',
     category: 'Organización'
   }
 ];
 
 const NewsSection: React.FC = () => {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState<typeof newsItems[0] | null>(null);
+
+  const handleOpen = (item: typeof newsItems[0]) => {
+    setSelected(item);
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+    setSelected(null);
+  };
+
+  const handleContactClick = () => {
+    const contactFormElement = document.getElementById('contact-form');
+    if (contactFormElement) {
+      contactFormElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="news" className="py-20 bg-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-[#BFAF8F]/30 rounded-full filter blur-3xl opacity-20 -ml-48 -mt-48"></div>
       </div>
-      
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           className="text-center mb-16"
@@ -59,8 +85,8 @@ const NewsSection: React.FC = () => {
             con conocimientos prácticos sobre sus derechos y herramientas para la acción colectiva.
           </p>
         </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Blog Grid */}
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' }, gap: 4 }}>
           {newsItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -68,44 +94,82 @@ const NewsSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-lg shadow-md border border-[#BFAF8F]/20 overflow-hidden hover:shadow-lg transition-shadow"
             >
-              <div className="h-48 bg-[#153959] relative overflow-hidden">
-                <div className="absolute top-0 left-0 bg-[#733A19] text-white text-xs font-bold px-3 py-1">
-                  {item.category}
-                </div>
-                <div className="w-full h-full bg-gradient-to-br from-[#733A19]/20 to-[#153959]/20 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="text-xs text-gray-500 mb-2">{item.date}</div>
-                <h3 className="text-xl font-bold text-[#0E1013] mb-3 line-clamp-2">{item.title}</h3>
-                <p className="text-gray-600 mb-5 text-sm line-clamp-3">{item.excerpt}</p>
-                <Link 
-                  href={`#`} // This would point to the full article in a real application
-                  className="inline-flex items-center text-[#733A19] font-medium hover:text-[#5C2E14] transition-colors"
-                >
-                  Descargar recurso
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                </Link>
-              </div>
+              <Box
+                tabIndex={0}
+                role="button"
+                aria-label={`Leer artículo: ${item.title}`}
+                onClick={() => handleOpen(item)}
+                onKeyPress={e => { if (e.key === 'Enter') handleOpen(item); }}
+                sx={{
+                  cursor: 'pointer',
+                  background: 'white',
+                  borderRadius: 3,
+                  boxShadow: 2,
+                  border: '1px solid #BFAF8F40',
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  minHeight: 420,
+                  transition: 'box-shadow 0.2s',
+                  '&:hover': { boxShadow: 6 }
+                }}
+              >
+                <Box sx={{ height: 180, width: '100%', position: 'relative', overflow: 'hidden', background: '#eee' }}>
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                  <Box sx={{ position: 'absolute', top: 0, left: 0, bgcolor: '#733A19', color: 'white', px: 2, py: 0.5, fontWeight: 700, fontSize: 13, borderBottomRightRadius: 8 }}>
+                    {item.category}
+                  </Box>
+                </Box>
+                <Box sx={{ flex: 1, p: 3, display: 'flex', flexDirection: 'column' }}>
+                  <Typography variant="caption" color="text.secondary" sx={{ mb: 0.5 }}>{item.date} {item.author && <>· {item.author}</>}</Typography>
+                  <Typography variant="h6" fontWeight={700} sx={{ mb: 1, color: '#0E1013' }}>{item.title}</Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2, flex: 1 }}>{item.excerpt}</Typography>
+                  <Button variant="text" sx={{ color: '#733A19', alignSelf: 'flex-start', fontWeight: 600 }} onClick={e => { e.stopPropagation(); handleOpen(item); }}>
+                    Leer más
+                  </Button>
+                </Box>
+              </Box>
             </motion.div>
           ))}
-        </div>
-        
-        <div className="text-center mt-12">
-          <Link 
-            href="/#resources" 
-            className="inline-block bg-[#733A19] hover:bg-[#5C2E14] text-white font-semibold py-3 px-8 rounded-md transition duration-300"
+        </Box>
+        {/* Modal for full article */}
+        <Modal open={open} onClose={handleClose} aria-labelledby="blog-modal-title" aria-describedby="blog-modal-content">
+          <Box sx={{ maxWidth: 600, bgcolor: 'white', mx: 'auto', my: 8, borderRadius: 3, boxShadow: 24, p: 4, outline: 'none', position: 'relative' }}>
+            <IconButton onClick={handleClose} sx={{ position: 'absolute', top: 12, right: 12 }} aria-label="Cerrar">
+              <CloseIcon />
+            </IconButton>
+            {selected && (
+              <>
+                <Box sx={{ height: 220, width: '100%', mb: 2, borderRadius: 2, overflow: 'hidden', background: '#eee' }}>
+                  <img
+                    src={selected.imageUrl}
+                    alt={selected.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                </Box>
+                <Typography variant="caption" color="text.secondary" sx={{ mb: 0.5 }}>{selected.date} {selected.author && <>· {selected.author}</>}</Typography>
+                <Typography variant="h5" fontWeight={700} sx={{ mb: 2, color: '#0E1013' }}>{selected.title}</Typography>
+                <Typography variant="body1" color="text.primary" sx={{ mb: 3 }}>{selected.content}</Typography>
+              </>
+            )}
+          </Box>
+        </Modal>
+        {/* CTA to publish in the blog */}
+        <Box sx={{ textAlign: 'center', mt: 10 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{ background: '#733A19', color: 'white', fontWeight: 600, px: 5, py: 2, borderRadius: 2, fontSize: 18, '&:hover': { background: '#5C2E14' } }}
+            onClick={handleContactClick}
           >
-            Explorar Todos los Recursos
-          </Link>
-        </div>
+            ¿Quieres publicar en nuestro blog? Contáctanos
+          </Button>
+        </Box>
       </div>
     </section>
   );
