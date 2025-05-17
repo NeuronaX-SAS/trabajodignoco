@@ -126,14 +126,31 @@ const themeOptions: ThemeOptions = {
     borderRadius: 8,
   },
   shadows: [
-    'none',
-    '0px 2px 6px rgba(0, 0, 0, 0.06)',
-    '0px 4px 8px rgba(0, 0, 0, 0.08)',
-    '0px 6px 12px rgba(0, 0, 0, 0.1)',
-    '0px 8px 16px rgba(0, 0, 0, 0.12)',
-    '0px 10px 20px rgba(0, 0, 0, 0.14)',
-    'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none',
-    'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none',
+    'none', // 0
+    '0px 2px 6px rgba(0, 0, 0, 0.06)', // 1
+    '0px 4px 8px rgba(0, 0, 0, 0.08)', // 2
+    '0px 6px 12px rgba(0, 0, 0, 0.1)', // 3
+    '0px 8px 16px rgba(0, 0, 0, 0.12)', // 4
+    '0px 10px 20px rgba(0, 0, 0, 0.14)', // 5
+    'none', // 6
+    'none', // 7
+    'none', // 8
+    'none', // 9
+    'none', // 10
+    'none', // 11
+    'none', // 12
+    'none', // 13
+    'none', // 14
+    'none', // 15
+    'none', // 16
+    'none', // 17
+    'none', // 18
+    'none', // 19
+    'none', // 20
+    'none', // 21
+    'none', // 22
+    'none', // 23
+    'none'  // 24
   ],
   components: {
     MuiButton: {
