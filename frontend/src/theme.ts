@@ -132,8 +132,8 @@ const themeOptions: ThemeOptions = {
     '0px 6px 12px rgba(0, 0, 0, 0.1)',
     '0px 8px 16px rgba(0, 0, 0, 0.12)',
     '0px 10px 20px rgba(0, 0, 0, 0.14)',
-    // Rest of shadows
-    ...Array(19).fill('none'),
+    'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none',
+    'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none',
   ],
   components: {
     MuiButton: {
