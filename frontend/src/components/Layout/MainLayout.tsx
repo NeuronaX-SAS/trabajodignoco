@@ -23,6 +23,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { logout } from '../../lib/redux/slices/authSlice';
@@ -113,16 +114,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', margin: 0, padding: 0 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <HideOnScroll>
         <AppBar position="sticky" elevation={0} sx={{ 
           background: 'linear-gradient(135deg, #733A19 0%, #5C2E14 100%)',
-          py: 1,
-          width: '100%',
-          margin: 0,
-          padding: 0
+          py: 1
         }}>
-          <Toolbar sx={{ justifyContent: 'space-between', width: '100%' }}>
+          <Toolbar sx={{ justifyContent: 'space-between' }}>
             {/* Logo and Brand - Centered on mobile */}
             <Box sx={{ 
               display: 'flex', 
@@ -140,12 +138,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 position: isMobile ? 'relative' : 'static',
                 zIndex: 1
               }}>
-                <img 
-                  src="/ICONO (5).png" 
+                <Image 
+                  src="/trabajodigno-logo.svg" 
                   alt="Trabajo Digno Logo" 
-                  width="30" 
-                  height="30"
-                  style={{ maxWidth: '100%', height: 'auto' }}
+                  width={30} 
+                  height={30}
+                  priority
                 />
               </Box>
               <Typography 
@@ -287,12 +285,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           py: 2
         }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <img 
-              src="/ISOTIPO (5).png" 
+            <Image 
+              src="/fleur-de-lis.svg" 
               alt="TrabajoDigno.co Logo" 
-              width="24" 
-              height="24" 
-              style={{ maxWidth: '100%', height: 'auto' }}
+              width={24} 
+              height={24}
+              priority
             />
             <Typography variant="h6" sx={{ ml: 1, fontWeight: 700 }}>
               Menu
@@ -388,9 +386,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         </List>
       </Drawer>
 
-      <Box component="main" sx={{ flexGrow: 1, width: '100%', padding: 0, margin: 0 }}>
+      <Container component="main" sx={{ mt: 4, mb: 4, flexGrow: 1 }}>
         {children}
-      </Box>
+      </Container>
 
     </Box>
   );
