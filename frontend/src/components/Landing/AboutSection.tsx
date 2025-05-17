@@ -44,20 +44,13 @@ const AboutSection: React.FC = () => {
               <div className="absolute -inset-4 bg-[#733A19]/10 rounded-2xl blur-xl"></div>
               <div className="relative rounded-2xl overflow-hidden aspect-video shadow-xl">
                 <div className="w-full h-96 bg-gradient-to-br from-[#733A19] to-[#5C2E14] flex items-center justify-center">
-                  {/* Organization identity image placeholder */}
-                  <Image 
-                    src="/organization-image.jpg" 
-                    alt="Trabajadores unidos por el trabajo digno" 
-                    layout="fill"
-                    objectFit="cover"
-                    className="opacity-80"
-                  />
+                  {/* Organization logo */}
                   <div className="absolute inset-0 flex items-center justify-center bg-[#0E1013]/30">
                     <Image 
                       src="/trabajodigno-logo.svg" 
                       alt="Trabajo Digno Logo" 
-                      width={100} 
-                      height={100}
+                      width={200} 
+                      height={60}
                       className="drop-shadow-lg"
                     />
                   </div>
