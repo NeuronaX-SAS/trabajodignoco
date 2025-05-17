@@ -128,9 +128,15 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               width: isMobile ? '100%' : 'auto',
               justifyContent: isMobile ? 'center' : 'flex-start'
             }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <img src="/ICONO (5).png" alt="Trabajo Digno Logo" width={36} height={36} style={{ borderRadius: '50%', background: '#BFAF8F', padding: 2 }} />
-                <img src="/ISOTIPO (5).png" alt="Trabajo Digno Isotipo" width={28} height={28} style={{ marginLeft: 4 }} />
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Image
+                  src="/ICONO (5).png"
+                  alt="Trabajo Digno Logo"
+                  width={40}
+                  height={40}
+                  style={{ borderRadius: '50%', background: '#BFAF8F', padding: 4, objectFit: 'cover' }}
+                  priority
+                />
                 <Typography 
                   variant="h6" 
                   component={Link} 
