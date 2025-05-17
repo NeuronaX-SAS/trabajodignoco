@@ -114,13 +114,16 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', margin: 0, padding: 0 }}>
       <HideOnScroll>
         <AppBar position="sticky" elevation={0} sx={{ 
           background: 'linear-gradient(135deg, #733A19 0%, #5C2E14 100%)',
-          py: 1
+          py: 1,
+          width: '100%',
+          margin: 0,
+          padding: 0
         }}>
-          <Toolbar sx={{ justifyContent: 'space-between' }}>
+          <Toolbar sx={{ justifyContent: 'space-between', width: '100%' }}>
             {/* Logo and Brand - Centered on mobile */}
             <Box sx={{ 
               display: 'flex', 
@@ -139,7 +142,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 zIndex: 1
               }}>
                 <Image 
-                  src="/trabajodigno-logo.svg" 
+                  src="/ICONO (5).png" 
                   alt="Trabajo Digno Logo" 
                   width={30} 
                   height={30}
@@ -286,7 +289,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Image 
-              src="/fleur-de-lis.svg" 
+              src="/ISOTIPO (5).png" 
               alt="TrabajoDigno.co Logo" 
               width={24} 
               height={24}
@@ -386,9 +389,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         </List>
       </Drawer>
 
-      <Container component="main" sx={{ mt: 4, mb: 4, flexGrow: 1 }}>
+      <Box component="main" sx={{ flexGrow: 1, width: '100%', padding: 0, margin: 0 }}>
         {children}
-      </Container>
+      </Box>
 
     </Box>
   );
