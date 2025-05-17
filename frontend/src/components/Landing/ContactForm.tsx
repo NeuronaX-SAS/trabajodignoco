@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Script from 'next/script';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import {
   TextField,
@@ -33,6 +34,7 @@ interface FormValues {
 }
 
 const ContactForm: React.FC = () => {
+  const router = useRouter();
   const initialValues: FormValues = {
     FNAME: '',
     EMAIL: '',
@@ -154,9 +156,9 @@ const ContactForm: React.FC = () => {
         </motion.div>
 
         <div className="max-w-5xl mx-auto">
-          <Grid container spacing={4}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
             {/* Form Column */}
-            <Grid item xs={12} md={7}>
+            <Box sx={{ width: { xs: '100%', md: '58%' } }}>
               <Paper 
                 elevation={3} 
                 sx={{ 
@@ -413,10 +415,10 @@ const ContactForm: React.FC = () => {
                   </form>
                 )}
               </Paper>
-            </Grid>
+            </Box>
 
             {/* Information Column */}
-            <Grid item xs={12} md={5}>
+            <Box sx={{ width: { xs: '100%', md: '38%' } }}>
               <div className="bg-[#BFAF8F]/10 p-6 rounded-md border border-[#BFAF8F]/30 h-full">
                 <h3 className="text-xl font-bold text-[#733A19] mb-4">
                   ¿Por qué es importante compartir tu experiencia?
@@ -470,8 +472,8 @@ const ContactForm: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
           
           {/* Educational resources section */}
           <div className="mt-16">
