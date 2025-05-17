@@ -1,14 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Box, Typography, Button } from '@mui/material';
 
+// Real TikTok video URLs from @trabajodigno.col
 const tiktokVideos = [
-  // Replace these with real TikTok video URLs or IDs from @trabajodigno.col
-  'https://www.tiktok.com/@trabajodigno.col/video/7351234567890123456',
-  'https://www.tiktok.com/@trabajodigno.col/video/7351234567890123457',
-  'https://www.tiktok.com/@trabajodigno.col/video/7351234567890123458',
+  'https://www.tiktok.com/@trabajodigno.col/video/7502177431537601847',
+  'https://www.tiktok.com/@trabajodigno.col/video/7498864575362731319',
+  'https://www.tiktok.com/@trabajodigno.col/video/7497274830006340870',
 ];
 
 const getTikTokEmbedUrl = (url: string) => {
@@ -18,6 +18,16 @@ const getTikTokEmbedUrl = (url: string) => {
 };
 
 const FormationSection: React.FC = () => {
+  // Ensure TikTok embed.js is loaded for best compatibility
+  useEffect(() => {
+    if (!document.querySelector('script[src="https://www.tiktok.com/embed.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://www.tiktok.com/embed.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
   return (
     <section id="education" className="py-20 bg-white relative overflow-hidden">
       {/* Background Elements */}
@@ -45,9 +55,9 @@ const FormationSection: React.FC = () => {
           </p>
         </motion.div>
         {/* TikTok Video Grid */}
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' }, gap: 4, mb: 8 }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {tiktokVideos.map((url, idx) => (
-            <Box key={idx} sx={{ aspectRatio: '9/16', borderRadius: 2, overflow: 'hidden', boxShadow: 2, background: '#000' }}>
+            <div key={idx} className="aspect-[9/16] w-full rounded-2xl overflow-hidden shadow-lg bg-black flex items-center justify-center">
               <iframe
                 src={getTikTokEmbedUrl(url)}
                 width="100%"
@@ -55,11 +65,11 @@ const FormationSection: React.FC = () => {
                 allow="autoplay; encrypted-media"
                 allowFullScreen
                 title={`TikTok Video ${idx + 1}`}
-                style={{ border: 0, width: '100%', height: '100%' }}
+                style={{ border: 0, width: '100%', height: '100%', minHeight: 400, maxHeight: 600 }}
               />
-            </Box>
+            </div>
           ))}
-        </Box>
+        </div>
         <Box sx={{ textAlign: 'center', mb: 8 }}>
           <Button
             variant="contained"
@@ -97,13 +107,6 @@ const FormationSection: React.FC = () => {
                 <div>
                   <h4 className="font-semibold text-white">Formato híbrido</h4>
                   <p className="text-white/70 text-sm">Realizamos talleres presenciales y virtuales para facilitar la participación desde cualquier lugar.</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <span className="w-8 h-8 rounded-full bg-[#BFAF8F]/20 text-[#BFAF8F] flex items-center justify-center mr-3 font-bold">3</span>
-                <div>
-                  <h4 className="font-semibold text-white">Aprendizaje colectivo</h4>
-                  <p className="text-white/70 text-sm">Fomentamos el intercambio de experiencias y saberes entre trabajadores.</p>
                 </div>
               </li>
             </ul>

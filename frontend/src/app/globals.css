@@ -109,3 +109,29 @@ body {
   background-clip: text;
   color: transparent;
 }
+
+/* Prevent horizontal scroll on header/appbar */
+header, .MuiAppBar-root, .MuiToolbar-root {
+  overflow-x: auto !important;
+  max-width: 100vw;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .MuiToolbar-root {
+    flex-wrap: wrap !important;
+    min-height: 56px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  .MuiAppBar-root {
+    min-height: 56px !important;
+  }
+}
