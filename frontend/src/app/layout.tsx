@@ -4,6 +4,7 @@ import "./globals.css";
 import ThemeRegistry from '../components/ThemeRegistry';
 import MainLayout from '../components/Layout/MainLayout';
 import StoreProvider from '../lib/redux/StoreProvider';
+import Head from 'next/head';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" style={{ margin: 0, padding: 0 }}>
+      <head>
+        <link rel="stylesheet" href="/main-styles.css" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{ margin: 0, padding: 0 }}

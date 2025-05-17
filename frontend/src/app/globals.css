@@ -9,6 +9,12 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 242, 240, 240;
   --background-end-rgb: 255, 255, 255;
+  --primary: #733A19;
+  --primary-dark: #5C2E14;
+  --primary-light: #BFAF8F;
+  --secondary: #153959;
+  --neutral: #0E1013;
+  --neutral-light: #F2F0F0;
 }
 
 * {
@@ -32,6 +38,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .tiktok-embed {

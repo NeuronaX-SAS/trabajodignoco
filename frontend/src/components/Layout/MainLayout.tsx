@@ -23,7 +23,6 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { logout } from '../../lib/redux/slices/authSlice';
@@ -141,12 +140,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 position: isMobile ? 'relative' : 'static',
                 zIndex: 1
               }}>
-                <Image 
+                <img 
                   src="/ICONO (5).png" 
                   alt="Trabajo Digno Logo" 
-                  width={30} 
-                  height={30}
-                  priority
+                  width="30" 
+                  height="30"
+                  style={{ maxWidth: '100%', height: 'auto' }}
                 />
               </Box>
               <Typography 
@@ -288,12 +287,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           py: 2
         }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Image 
+            <img 
               src="/ISOTIPO (5).png" 
               alt="TrabajoDigno.co Logo" 
-              width={24} 
-              height={24}
-              priority
+              width="24" 
+              height="24" 
+              style={{ maxWidth: '100%', height: 'auto' }}
             />
             <Typography variant="h6" sx={{ ml: 1, fontWeight: 700 }}>
               Menu
