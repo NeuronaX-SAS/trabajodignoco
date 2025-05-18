@@ -13,9 +13,65 @@ const newsItems = [
     id: '1',
     title: 'Cartilla: Conozca sus derechos laborales fundamentales',
     excerpt: 'Guía práctica sobre los derechos laborales más importantes que todo trabajador colombiano debe conocer para defender su dignidad en el trabajo.',
-    content: 'Guía práctica sobre los derechos laborales más importantes que todo trabajador colombiano debe conocer para defender su dignidad en el trabajo. (Aquí iría el contenido completo del artículo, puedes expandirlo en el futuro)',
-    date: '15 Jun 2023',
-    author: 'Equipo Trabajo Digno',
+    content: `<h2>Defiende tu Dignidad: Guía Esencial de Derechos Laborales en Colombia</h2>
+
+<p>En el complejo mundo laboral, conocer tus derechos es el primer paso para asegurar un trato justo y defender tu dignidad. En Colombia, la legislación laboral establece un marco de protección para los trabajadores que es fundamental comprender. Esta guía práctica te presentará los derechos más importantes que todo empleado colombiano debe conocer.</p>
+
+<h3>Pilares Fundamentales de tus Derechos Laborales:</h3>
+
+<p>La Constitución Política de Colombia y el Código Sustantivo del Trabajo son los cimientos sobre los cuales se construyen tus derechos laborales. Estos buscan garantizar un equilibrio en la relación empleado-empleador, protegiéndote de abusos y asegurando condiciones dignas.</p>
+
+<h3>Derechos Esenciales que Debes Conocer:</h3>
+
+<ul>
+  <li>
+    <strong>A un Trabajo Digno y Justo:</strong> Toda persona tiene derecho a acceder a un empleo en condiciones de dignidad, sin discriminación de ningún tipo (género, raza, religión, condición social). Esto implica un ambiente laboral respetuoso y libre de acoso.
+  </li>
+  <li>
+    <strong>Remuneración Justa y Salario Mínimo:</strong> Tienes derecho a recibir un salario proporcional a la cantidad y calidad de tu trabajo. En Colombia, existe un salario mínimo legal que debe ser respetado.
+  </li>
+  <li>
+    <strong>Jornada Laboral y Descansos:</strong> La ley establece una jornada laboral máxima, que actualmente se está reduciendo gradualmente. También tienes derecho a descansos diarios, semanales y a vacaciones remuneradas.
+  </li>
+  <li>
+    <strong>Seguridad Social Integral:</strong> Es un derecho fundamental que tu empleador te afilie al sistema de seguridad social, que cubre salud, pensión y riesgos laborales. Esto te protege en caso de enfermedad, accidentes laborales, vejez o invalidez.
+  </li>
+  <li>
+    <strong>Prestaciones Sociales:</strong> Además de tu salario, tienes derecho a recibir prestaciones sociales como la prima de servicios, las cesantías y los intereses a las cesantías.
+  </li>
+  <li>
+    <strong>Estabilidad Laboral y Protección Contra el Despido Injustificado:</strong> Se busca protegerte contra despidos arbitrarios. Un despido debe tener una justa causa legalmente válida; de lo contrario, puedes tener derecho a una indemnización.
+  </li>
+  <li>
+    <strong>Libertad de Asociación y Sindicalización:</strong> Tienes el derecho de asociarte libremente en sindicatos para la defensa de tus intereses laborales y negociar colectivamente las condiciones de trabajo.
+  </li>
+  <li>
+    <strong>Irrenunciabilidad de Derechos:</strong> No puedes renunciar a los beneficios mínimos establecidos en las normas laborales. Cualquier acuerdo que pretenda desconocerlos es inválido.
+  </li>
+  <li>
+    <strong>Primacía de la Realidad sobre las Formalidades:</strong> Lo que realmente sucede en la relación laboral prevalece sobre lo que esté escrito en un contrato si esto último va en detrimento de tus derechos.
+  </li>
+  <li>
+    <strong>Protección Contra el Acoso Laboral:</strong> La Ley 1010 de 2006 te protege contra diversas formas de maltrato y hostigamiento en el entorno laboral, buscando garantizar un ambiente de trabajo armonioso y respetuoso.
+  </li>
+</ul>
+
+<h3>¿Por Qué es Crucial Conocer tus Derechos?</h3>
+
+<p>Entender tus derechos laborales te empodera. Te permite:</p>
+
+<ul>
+  <li><strong>Exigir condiciones justas:</strong> Desde un salario adecuado hasta un trato respetuoso.</li>
+  <li><strong>Prevenir abusos:</strong> El conocimiento es tu primera línea de defensa.</li>
+  <li><strong>Tomar decisiones informadas:</strong> Sobre tu contrato, tus condiciones y tu futuro laboral.</li>
+  <li>
+    <strong>Buscar ayuda cuando sea necesario:</strong> Si sientes que tus derechos son vulnerados, saber cuáles son te permitirá acudir a las instancias correspondientes, como el Ministerio de Trabajo o buscar asesoría legal.
+  </li>
+</ul>
+
+<p>Defender tu dignidad en el trabajo comienza por estar informado. Investiga, pregunta y no dudes en hacer valer los derechos que la ley colombiana te otorga. Un trabajador informado es un trabajador respetado.</p>`,
+    date: '18 May 2025',
+    author: 'Redacción Trabajo Digno',
     imageUrl: '/placeholder-news-1.jpg',
     category: 'Recursos Educativos'
   },
