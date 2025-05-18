@@ -70,6 +70,28 @@ const FormationSection: React.FC = () => {
           >
             Ver más en TikTok
           </Button>
+          
+          {/* Social Media Icons - Added below the TikTok button */}
+          <Box sx={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            gap: 3, 
+            mt: 3,
+            p: 2,
+            borderRadius: 2,
+            background: 'rgba(191, 175, 143, 0.1)'
+          }}>
+            <a href="https://www.instagram.com/trabajodigno.col/" target="_blank" rel="noopener noreferrer">
+              <img src="/social/instagram-1-svgrepo-com.svg" alt="Instagram" width={36} height={36} />
+            </a>
+            <a href="https://www.tiktok.com/@trabajodigno.col" target="_blank" rel="noopener noreferrer">
+              <img src="/social/tiktok-icon-white-1-logo-svgrepo-com.svg" alt="TikTok" width={36} height={36} />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61575746772724" target="_blank" rel="noopener noreferrer">
+              <img src="/social/facebook-color-svgrepo-com.svg" alt="Facebook" width={36} height={36} />
+            </a>
+          </Box>
         </Box>
         {/* Info Card (keep as is) */}
         <motion.div

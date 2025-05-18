@@ -168,13 +168,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 {!isMobile && (
                   <Box sx={{ display: 'flex', alignItems: 'center', ml: 3, gap: 1 }}>
                     <a href="https://www.instagram.com/trabajodigno.col/" target="_blank" rel="noopener noreferrer">
-                      <img src="/logos/instagram.svg" alt="Instagram" width={22} height={22} />
+                      <img src="/social/instagram-1-svgrepo-com.svg" alt="Instagram" width={22} height={22} />
                     </a>
                     <a href="https://www.tiktok.com/@trabajodigno.col" target="_blank" rel="noopener noreferrer">
-                      <img src="/logos/tiktok.svg" alt="TikTok" width={22} height={22} />
+                      <img src="/social/tiktok-icon-white-1-logo-svgrepo-com.svg" alt="TikTok" width={22} height={22} />
                     </a>
                     <a href="https://www.facebook.com/profile.php?id=61575746772724" target="_blank" rel="noopener noreferrer">
-                      <img src="/logos/facebook.svg" alt="Facebook" width={22} height={22} />
+                      <img src="/social/facebook-color-svgrepo-com.svg" alt="Facebook" width={22} height={22} />
                     </a>
                   </Box>
                 )}
@@ -353,13 +353,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             <ListItem sx={{ display: 'flex', justifyContent: 'center', pt: 2, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <a href="https://www.instagram.com/trabajodigno.col/" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
-                  <img src="/logos/instagram.svg" alt="Instagram" width={28} height={28} />
+                  <img src="/social/instagram-1-svgrepo-com.svg" alt="Instagram" width={28} height={28} />
                 </a>
                 <a href="https://www.tiktok.com/@trabajodigno.col" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
-                  <img src="/logos/tiktok.svg" alt="TikTok" width={28} height={28} />
+                  <img src="/social/tiktok-icon-white-1-logo-svgrepo-com.svg" alt="TikTok" width={28} height={28} />
                 </a>
                 <a href="https://www.facebook.com/profile.php?id=61575746772724" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
-                  <img src="/logos/facebook.svg" alt="Facebook" width={28} height={28} />
+                  <img src="/social/facebook-color-svgrepo-com.svg" alt="Facebook" width={28} height={28} />
                 </a>
               </Box>
             </ListItem>
