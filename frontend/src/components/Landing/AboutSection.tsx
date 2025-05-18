@@ -53,13 +53,7 @@ const AboutSection: React.FC = () => {
                     className="opacity-80"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-[#0E1013]/30">
-                    <Image 
-                      src="/logos/logo.svg" 
-                      alt="Trabajo Digno Logo" 
-                      width={100} 
-                      height={100}
-                      className="drop-shadow-lg"
-                    />
+                    {/* Logo removed as requested */}
                   </div>
                 </div>
               </div>
