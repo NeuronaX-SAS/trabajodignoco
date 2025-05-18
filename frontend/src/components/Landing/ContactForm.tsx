@@ -467,7 +467,7 @@ const ContactForm: React.FC = () => {
                   <h4 className="font-bold text-[#733A19] mb-2">¿Necesitas apoyo inmediato?</h4>
                   <div className="bg-[#733A19]/10 p-4 rounded-md">
                     <p className="text-[#733A19] font-medium mb-2">Línea de atención:</p>
-                    <p className="font-bold text-lg">+57 300 123 4567</p>
+                    <p className="font-bold text-lg">+57 (601) 13347977</p>
                     <p className="text-gray-700 text-xs mt-1">Lunes a viernes de 8am a 6pm</p>
                   </div>
                 </div>
