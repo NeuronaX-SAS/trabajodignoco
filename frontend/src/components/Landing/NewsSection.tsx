@@ -79,8 +79,68 @@ const newsItems = [
     id: '2',
     title: 'Derechos de los trabajadores en plataformas digitales',
     excerpt: 'Los trabajadores de aplicaciones como Rappi, Uber y otras plataformas digitales tienen derechos laborales que deben ser respetados. Conoce cuáles son.',
-    content: 'Los trabajadores de aplicaciones como Rappi, Uber y otras plataformas digitales tienen derechos laborales que deben ser respetados. Conoce cuáles son. (Aquí iría el contenido completo del artículo, puedes expandirlo en el futuro)',
-    date: '03 May 2023',
+    content: `<h2>Trabajadores de Plataformas Digitales en Colombia: ¿Cuáles son tus Derechos?</h2>
+
+<p>El auge de aplicaciones como Rappi, Uber, DiDi, Picap y otras plataformas digitales ha transformado la manera en que accedemos a servicios y, fundamentalmente, ha creado nuevas formas de trabajo. Miles de colombianos encuentran en estas plataformas una fuente de ingresos, pero surge una pregunta crucial: ¿cuáles son sus derechos laborales? Si eres uno de ellos, esta información te interesa.</p>
+
+<h3>El Debate Central: ¿Trabajador Dependiente o Contratista Independiente?</h3>
+
+<p>La naturaleza de la relación entre los trabajadores y estas plataformas es el epicentro del debate. Las empresas suelen argumentar que los repartidores, conductores o prestadores de servicios son "socios" o "contratistas independientes", lo que, bajo la legislación tradicional, los excluiría de muchos derechos laborales básicos. Sin embargo, cada vez más voces y análisis jurídicos señalan elementos de subordinación (control sobre horarios, tarifas, asignación de tareas, calificaciones, sanciones) que podrían configurar una relación laboral encubierta.</p>
+
+<h3>Derechos que Deberían Ser Respetados (y por los que se Lucha):</h3>
+
+<p>Independientemente de la figura contractual, existen derechos fundamentales y condiciones mínimas que deberían ser garantizados para asegurar la dignidad de quienes laboran a través de estas aplicaciones:</p>
+
+<ul>
+  <li>
+    <strong>A una Remuneración Justa y Transparente:</strong> Esto incluye el derecho a conocer claramente cómo se calculan las tarifas, qué comisiones se deducen y a recibir un pago que permita cubrir las necesidades básicas y los costos operativos (gasolina, mantenimiento del vehículo/moto, datos móviles, etc.). Se debate la necesidad de ingresos mínimos garantizados por hora de conexión o trabajo efectivo.
+  </li>
+  <li>
+    <strong>Seguridad Social Integral:</strong> Este es uno de los puntos más críticos. Los trabajadores de plataformas deberían tener acceso a la cobertura en salud, pensión y, crucialmente, a Riesgos Laborales (ARL), especialmente considerando los peligros a los que se exponen (accidentes de tránsito, robos, etc.). Actualmente, muchos deben asumir estos costos de forma individual, si es que pueden.
+  </li>
+  <li>
+    <strong>Condiciones de Trabajo Seguras y Saludables:</strong> Las plataformas deberían tener un rol más activo en promover la seguridad de sus trabajadores, ofreciendo elementos de protección, seguros contra accidentes, y canales efectivos para reportar incidentes o situaciones de riesgo.
+  </li>
+  <li>
+    <strong>Jornadas de Trabajo Razonables y Descansos:</strong> Aunque la flexibilidad es un atractivo, la presión por generar ingresos puede llevar a jornadas extenuantes. Se discute la necesidad de límites para prevenir la fatiga y proteger la salud.
+  </li>
+  <li>
+    <strong>Protección Contra Decisiones Arbitrarias (Desactivaciones):</strong> Los trabajadores deben tener derecho a un debido proceso antes de ser desactivados o suspendidos de la plataforma, con la posibilidad de apelar y conocer las razones de dichas decisiones. La transparencia en los sistemas de calificación y sanción es fundamental.
+  </li>
+  <li>
+    <strong>Libertad de Asociación y Negociación Colectiva:</strong> El derecho a organizarse para defender sus intereses y negociar mejores condiciones de trabajo es un pilar fundamental en cualquier relación laboral.
+  </li>
+  <li>
+    <strong>No Discriminación y Trato Justo:</strong> Al igual que en cualquier entorno laboral, se debe garantizar un trato libre de discriminación por cualquier motivo.
+  </li>
+  <li>
+    <strong>Transparencia Algorítmica:</strong> Es importante que los trabajadores entiendan cómo los algoritmos de la plataforma asignan tareas, fijan precios y evalúan su desempeño, para evitar sesgos o prácticas injustas.
+  </li>
+</ul>
+
+<h3>Un Panorama en Evolución</h3>
+
+<p>Es importante destacar que el marco legal para los trabajadores de plataformas digitales en Colombia y en el mundo está en constante evolución. Ya existen discusiones legislativas y pronunciamientos judiciales que buscan aclarar la naturaleza de esta relación laboral y otorgar mayores protecciones. Proyectos de ley han sido presentados buscando regular estas nuevas formas de empleo.</p>
+
+<h3>¿Qué Puedes Hacer?</h3>
+
+<ul>
+  <li>
+    <strong>Infórmate:</strong> Conoce los debates actuales, las propuestas legislativas y los pronunciamientos de las cortes.
+  </li>
+  <li>
+    <strong>Documenta tu Actividad:</strong> Guarda registros de tus horas de conexión, ingresos, comunicaciones con la plataforma y cualquier incidente.
+  </li>
+  <li>
+    <strong>Busca Asesoría:</strong> Si sientes que tus derechos están siendo vulnerados, considera buscar asesoría legal o acercarte a organizaciones que defienden los derechos de los trabajadores de plataformas.
+  </li>
+  <li>
+    <strong>Participa:</strong> Si te es posible, únete a discusiones o grupos que buscan mejorar las condiciones laborales en el sector.
+  </li>
+</ul>
+
+<p>El trabajo en plataformas digitales es una realidad que llegó para quedarse. Asegurar que este modelo sea sostenible y justo para quienes lo hacen posible es un desafío que involucra a trabajadores, empresas, gobierno y sociedad en general. Conocer tus derechos es el primer paso para defender tu dignidad en este nuevo entorno laboral.</p>`,
+    date: '18 May 2025',
     author: 'Redacción Trabajo Digno',
     imageUrl: '/placeholder-news-2.jpg',
     category: 'Derechos Laborales'
@@ -89,8 +149,90 @@ const newsItems = [
     id: '3',
     title: 'Cómo organizarse colectivamente en tu lugar de trabajo',
     excerpt: 'Guía práctica para la organización colectiva de los trabajadores: cómo fortalecer lazos de solidaridad y construir poder desde la base.',
-    content: 'Guía práctica para la organización colectiva de los trabajadores: cómo fortalecer lazos de solidaridad y construir poder desde la base. (Aquí iría el contenido completo del artículo, puedes expandirlo en el futuro)',
-    date: '27 Abr 2023',
+    content: `<h2>Construyendo Poder desde la Base: Guía Práctica para la Organización Colectiva de Trabajadores</h2>
+
+<p>En un mundo laboral que a menudo puede parecer desigual, la unión hace la fuerza. La organización colectiva es una herramienta poderosa que permite a los trabajadores y trabajadoras no solo defender sus derechos, sino también mejorar sus condiciones laborales y construir un futuro más justo. Esta guía práctica te mostrará cómo puedes empezar a fortalecer lazos de solidaridad y construir poder desde la base junto a tus compañeros.</p>
+
+<h3>¿Por Qué Organizarse? El Poder de la Unidad</h3>
+
+<p>Individualmente, la voz de un trabajador puede ser fácilmente ignorada. Colectivamente, esa voz se convierte en un coro imposible de silenciar. Organizarse permite:</p>
+<ul>
+  <li><strong>Negociar en Igualdad de Condiciones:</strong> Frente al poder del empleador, la organización colectiva equilibra la balanza.</li>
+  <li><strong>Mejorar Salarios y Beneficios:</strong> Históricamente, los trabajadores organizados han logrado mejores condiciones salariales y prestaciones.</li>
+  <li><strong>Garantizar Condiciones de Trabajo Seguras y Dignas:</strong> La seguridad y la salud en el trabajo son preocupaciones comunes que se abordan mejor en conjunto.</li>
+  <li><strong>Combatir la Discriminación y el Abuso:</strong> Un frente unido es más fuerte para denunciar y erradicar prácticas injustas.</li>
+  <li><strong>Tener una Voz en las Decisiones que Afectan tu Trabajo:</strong> La participación en la toma de decisiones es fundamental para la democracia laboral.</li>
+  <li><strong>Fomentar la Solidaridad y el Apoyo Mutuo:</strong> Saber que no estás solo y que cuentas con el respaldo de tus colegas es invaluable.</li>
+</ul>
+
+<h3>Pasos Clave para Empezar a Organizarte Desde la Base:</h3>
+
+<p>La organización no siempre significa crear un sindicato formal desde el primer día (aunque puede ser un objetivo). Comienza con la construcción de relaciones y la identificación de metas comunes:</p>
+
+<ol>
+  <li>
+    <strong>Habla con tus Colegas (Discretamente al Inicio):</strong>
+    Comienza conversaciones informales uno a uno con compañeros de confianza. Escucha sus preocupaciones, comparte las tuyas y sondea el interés en mejorar las cosas. La discreción inicial puede ser importante dependiendo del ambiente laboral.
+  </li>
+  <li>
+    <strong>Identifica Problemas y Objetivos Comunes:</strong>
+    ¿Cuáles son los problemas que más afectan al grupo? ¿Salarios bajos, largas jornadas, falta de seguridad, trato injusto? Definir claramente los problemas y los objetivos que se quieren alcanzar unirá al grupo.
+  </li>
+  <li>
+    <strong>Edúquense Juntos sobre sus Derechos:</strong>
+    Conocer el Código Sustantivo del Trabajo, la Constitución y otras normativas laborales es fundamental. Investiguen juntos cuáles son sus derechos y las obligaciones del empleador.
+  </li>
+  <li>
+    <strong>Construyan Confianza y Solidaridad:</strong>
+    Este es el cimiento de cualquier organización. Organicen reuniones informales (fuera del trabajo si es necesario), compartan experiencias y apoyense mutuamente. La confianza es clave para superar el miedo.
+  </li>
+  <li>
+    <strong>Formen un Comité Organizador o Grupo Núcleo:</strong>
+    Un pequeño grupo de personas comprometidas puede empezar a coordinar los esfuerzos, planificar reuniones y distribuir tareas. Aseguren que sea representativo.
+  </li>
+  <li>
+    <strong>Definan una Estructura y Reglas Básicas (Incluso Informales):</strong>
+    ¿Cómo se tomarán las decisiones? ¿Cómo se comunicarán? ¿Quiénes serán los voceros si es necesario? Establecer reglas claras, aunque sean sencillas, ayuda a la cohesión.
+  </li>
+  <li>
+    <strong>Comuniquen de Manera Efectiva e Inclusiva:</strong>
+    Mantengan a todos los interesados informados. Usen canales de comunicación seguros y accesibles para todos. Asegúrense de que todas las voces sean escuchadas.
+  </li>
+  <li>
+    <strong>Planifiquen Acciones (Comiencen con Pequeñas Victorias):</strong>
+    No es necesario empezar con una huelga. Una primera acción podría ser una carta firmada por varios trabajadores solicitando una mejora específica, o una reunión con la gerencia para plantear inquietudes. Las pequeñas victorias construyen moral y demuestran el poder del colectivo.
+  </li>
+  <li>
+    <strong>Consideren Formas Más Estructuradas (Como un Sindicato):</strong>
+    A medida que el grupo crece y se consolida, pueden explorar la posibilidad de formar un sindicato, que es la forma de organización laboral con mayor reconocimiento legal y capacidad de negociación colectiva formal. Investiguen los requisitos y procesos.
+  </li>
+  <li>
+    <strong>Busquen Apoyo Externo si es Necesario:</strong>
+    Existen organizaciones, federaciones sindicales y abogados laboralistas que pueden ofrecer asesoría, capacitación y apoyo en el proceso de organización.
+  </li>
+</ol>
+
+<h3>Fortaleciendo los Lazos de Solidaridad:</h3>
+<ul>
+  <li><strong>Escucha Activa:</strong> Presta atención genuina a las preocupaciones de tus compañeros.</li>
+  <li><strong>Empatía:</strong> Intenta comprender las diferentes situaciones y perspectivas.</li>
+  <li><strong>Respeto Mutuo:</strong> Incluso cuando haya desacuerdos, el respeto es fundamental.</li>
+  <li><strong>Inclusión:</strong> Asegúrate de que todos se sientan parte del grupo, sin importar su cargo, género, edad u origen.</li>
+  <li><strong>Celebración de los Logros:</strong> Reconozcan y celebren juntos cada paso adelante, por pequeño que sea.</li>
+</ul>
+
+<h3>Retos Comunes y Cómo Afrontarlos:</h3>
+<p>Organizarse no siempre es fácil. Pueden surgir miedos a represalias, desconfianza, o intentos por parte de la empresa para desmotivar la organización. Es crucial:</p>
+<ul>
+  <li><strong>Actuar con Unidad:</strong> Un grupo unido es más difícil de intimidar.</li>
+  <li><strong>Conocer y Ejercer el Derecho de Asociación:</strong> Es un derecho fundamental protegido por la ley.</li>
+  <li><strong>Documentar Todo:</strong> Cualquier intento de represalia o práctica antisindical debe ser documentado.</li>
+  <li><strong>Mantener la Moral Alta:</strong> Recordar constantemente los objetivos y el poder de la solidaridad.</li>
+</ul>
+
+<h3>El Futuro Está en sus Manos</h3>
+<p>La organización colectiva de los trabajadores es un derecho y una necesidad para construir relaciones laborales más justas y equitativas. Fortalecer los lazos de solidaridad y construir poder desde la base no es una tarea sencilla, pero sus frutos –dignidad, respeto y mejores condiciones para todos– hacen que el esfuerzo valga la pena. ¡El poder de cambiar las cosas reside en su unidad!</p>`,
+    date: '18 May 2025',
     author: 'Invitado: Sindicalista',
     imageUrl: '/placeholder-news-3.jpg',
     category: 'Organización'
