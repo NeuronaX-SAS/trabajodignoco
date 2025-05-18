@@ -135,15 +135,18 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: isMobile ? 1 : 2 }}>
                 <Image
-                  src="/ICONO (5).png"
+                  src="/logos/logo.svg"
                   alt="Trabajo Digno Logo"
                   width={isMobile ? 32 : 40}  // Smaller logo on mobile
                   height={isMobile ? 32 : 40}
                   style={{ 
                     borderRadius: '50%', 
                     background: '#BFAF8F', 
-                    padding: isMobile ? 3 : 4,
-                    objectFit: 'cover' 
+                    padding: isMobile ? 2 : 3,
+                    objectFit: 'contain',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}
                   priority
                 />

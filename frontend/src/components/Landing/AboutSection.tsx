@@ -54,7 +54,7 @@ const AboutSection: React.FC = () => {
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-[#0E1013]/30">
                     <Image 
-                      src="/trabajodigno-logo.svg" 
+                      src="/logos/logo.svg" 
                       alt="Trabajo Digno Logo" 
                       width={100} 
                       height={100}
