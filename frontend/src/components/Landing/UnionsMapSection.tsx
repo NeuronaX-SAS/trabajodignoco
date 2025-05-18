@@ -70,10 +70,7 @@ const UnionsMapSection: React.FC = () => {
   
   return (
     <section id="unions-map" className="py-20 bg-[#F2F0F0] relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#BFAF8F]/20 rounded-full filter blur-3xl opacity-20 -mr-48 -mb-48"></div>
-      </div>
+      {/* Background Elements Removed as requested */}
       {/* Section removed as requested */}
     </section>
   );
