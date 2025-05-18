@@ -9,8 +9,8 @@ const AboutSection: React.FC = () => {
     <section id="about" className="py-20 bg-[#F2F0F0] relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#BFAF8F] rounded-full filter blur-3xl opacity-20 -mr-48 -mt-48"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#153959] rounded-full filter blur-3xl opacity-20 -ml-48 -mb-48"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#BFAF8F] rounded-full filter blur-2xl opacity-20 -mr-32 -mt-32"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#153959] rounded-full filter blur-2xl opacity-20 -ml-32 -mb-32"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
