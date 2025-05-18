@@ -123,7 +123,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           <Toolbar sx={{ 
             justifyContent: 'space-between', 
             minHeight: { xs: '56px', sm: '64px' },  // Explicit min-height for mobile
-            px: { xs: 1, sm: 2 }  // Less horizontal padding on mobile
+            px: { xs: 1, sm: 2 },  // Less horizontal padding on mobile
+            position: 'relative'   // Add relative positioning
           }}>
             {/* Logo and Brand - Centered on mobile */}
             <Box sx={{ 
@@ -252,7 +253,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                         backgroundColor: '#BFAF8F', 
                         color: '#0E1013',
                         fontWeight: 600,
-                        '&:hover': { backgroundColor: '#D0C7AF' } 
+                        '&:hover': { backgroundColor: '#D0C7AF' },
+                        minWidth: 'fit-content',  // Ensure button width fits content
+                        whiteSpace: 'nowrap',     // Prevent text wrapping
+                        mr: { xs: 3.5, sm: 1 }    // Add right margin to prevent cutting off
                       }}
                       onClick={scrollToContact}
                     >
@@ -273,7 +277,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 sx={{ 
                   position: 'absolute',
                   right: 8,
-                  p: 1  // Reduced padding for the button itself
+                  p: 1,  // Reduced padding for the button itself
+                  zIndex: 2  // Ensure it's above other elements
                 }}
               >
                 <MenuIcon />
