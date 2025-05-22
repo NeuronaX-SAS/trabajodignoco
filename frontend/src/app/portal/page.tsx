@@ -17,7 +17,6 @@ import {
   useTheme,
   useMediaQuery,
   Chip,
-  Avatar,
   CardContent
 } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -31,7 +30,15 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 // Create a Grid component that satisfies TypeScript
-const Grid = MuiGrid as React.ComponentType<any>;
+const Grid = MuiGrid as React.ComponentType<{
+  container?: boolean;
+  item?: boolean;
+  xs?: number;
+  sm?: number;
+  md?: number;
+  spacing?: number;
+  children?: React.ReactNode;
+}>;
 
 const PortalPage = () => {
   const router = useRouter();
@@ -160,7 +167,7 @@ const PortalPage = () => {
     }
   ];
 
-  const navigateToCategory = (category: any) => {
+  const navigateToCategory = (category: { category: string }) => {
     router.push(`/portal/categoria/${encodeURIComponent(category.category)}`);
   };
 

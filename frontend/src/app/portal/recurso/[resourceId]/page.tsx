@@ -1,5 +1,7 @@
 'use client';
 
+export const runtime = 'edge';
+
 import React, { useState, useEffect } from 'react';
 import { 
   Box, 
@@ -22,7 +24,7 @@ import Link from 'next/link';
 import { Resource, getResourceById, getRelatedResources } from '@/lib/resourcesApi';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-// Create a Grid component that satisfies TypeScript
+// Use MuiGrid directly to avoid TypeScript issues
 const Grid = MuiGrid as React.ComponentType<any>;
 
 // Split text into paragraphs
