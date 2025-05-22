@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Box, Container, Typography, TextField, InputAdornment, IconButton, CircularProgress } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -8,7 +8,7 @@ import ResourceList from '@/components/Common/ResourceList';
 import { searchResources, Resource } from '@/lib/resourcesApi';
 import { useSearchParams, useRouter } from 'next/navigation';
 
-const SearchPage = () => {
+const SearchContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const initialQuery = searchParams.get('query') || '';
@@ -145,6 +145,18 @@ const SearchPage = () => {
         )}
       </Container>
     </Box>
+  );
+};
+
+const SearchPage = () => {
+  return (
+    <Suspense fallback={
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+        <CircularProgress />
+      </Box>
+    }>
+      <SearchContent />
+    </Suspense>
   );
 };
 

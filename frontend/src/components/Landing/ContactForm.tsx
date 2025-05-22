@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Script from 'next/script';
-import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import {
   TextField,
@@ -15,7 +14,6 @@ import {
   Checkbox,
   FormControlLabel,
   CircularProgress,
-  Box,
   SelectChangeEvent,
   Typography,
   Paper,
@@ -38,9 +36,8 @@ interface FormValues {
 }
 
 const ContactForm: React.FC = () => {
-  const router = useRouter();
   // Use the firebase hook
-  const { loading: firebaseLoading, error: firebaseError, addDocument } = useFirebase();
+  const { addDocument } = useFirebase();
   
   const initialValues: FormValues = {
     FNAME: '',

@@ -10,7 +10,6 @@ import {
   Button,
   CircularProgress,
   Alert,
-  Divider,
   Chip,
   IconButton
 } from '@mui/material';
@@ -18,7 +17,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import ResourceList from '@/components/Common/ResourceList';
-import { Resource, getResources, getResourcesByCategory, ensureResourcesForAllCategories } from '@/lib/resourcesApi';
+import { Resource, getResourcesByCategory, ensureResourcesForAllCategories } from '@/lib/resourcesApi';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 // Icons for categories
@@ -51,7 +50,11 @@ const getCategoryColor = (category: string): string => {
   return categoryColors[category] || categoryColors['Default'];
 };
 
-export default function CategoryPage({ params }: { params: { categoryId: string } }) {
+interface PageProps {
+  params: Promise<{ categoryId: string }>;
+}
+
+export default function CategoryPage({ params }: PageProps) {
   const router = useRouter();
   const [resources, setResources] = useState<Resource[]>([]);
   const [loading, setLoading] = useState(true);
@@ -62,7 +65,8 @@ export default function CategoryPage({ params }: { params: { categoryId: string 
     const loadResources = async () => {
       setLoading(true);
       try {
-        const categoryId = decodeURIComponent(params.categoryId);
+        const resolvedParams = await params;
+        const categoryId = decodeURIComponent(resolvedParams.categoryId);
         setCategoryName(categoryId);
         
         // Try the regular way first
@@ -86,7 +90,7 @@ export default function CategoryPage({ params }: { params: { categoryId: string 
     };
 
     loadResources();
-  }, [params.categoryId]);
+  }, [params]);
   
   const categoryIcon = getCategoryIcon(categoryName);
   const categoryColor = getCategoryColor(categoryName);
@@ -183,7 +187,7 @@ export default function CategoryPage({ params }: { params: { categoryId: string 
               No se encontraron recursos en esta categoría
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-              Actualmente no hay recursos disponibles para "{categoryName}". 
+              Actualmente no hay recursos disponibles para &quot;{categoryName}&quot;. 
               Si deseas contribuir con contenido educativo para esta categoría, 
               consulta las instrucciones en el README.
             </Typography>
@@ -198,27 +202,10 @@ export default function CategoryPage({ params }: { params: { categoryId: string 
                 }
               }}
             >
-              Volver al portal
+              Volver al Portal
             </Button>
           </Box>
         )}
-        
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6 }}>
-          <Button 
-            variant="outlined" 
-            onClick={() => router.push('/portal/recursos/todos')}
-            sx={{ 
-              borderColor: '#733A19', 
-              color: '#733A19',
-              '&:hover': { 
-                borderColor: '#5c2e14', 
-                backgroundColor: 'rgba(115, 58, 25, 0.04)' 
-              }
-            }}
-          >
-            Ver todos los recursos
-          </Button>
-        </Box>
       </Container>
     </motion.div>
   );

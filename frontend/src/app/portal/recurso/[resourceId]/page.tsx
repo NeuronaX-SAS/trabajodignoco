@@ -9,13 +9,9 @@ import {
   Breadcrumbs,
   Link as MuiLink,
   Button,
-  Divider,
   Chip,
   Grid as MuiGrid,
   CircularProgress,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
   Alert,
   Card,
   CardContent
@@ -24,7 +20,6 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Resource, getResourceById, getRelatedResources } from '@/lib/resourcesApi';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 // Create a Grid component that satisfies TypeScript
@@ -36,7 +31,11 @@ const formatText = (text?: string) => {
   return text.split('\r\n\r\n').filter(Boolean);
 };
 
-export default function ResourcePage({ params }: { params: { resourceId: string } }) {
+interface PageProps {
+  params: Promise<{ resourceId: string }>;
+}
+
+export default function ResourcePage({ params }: PageProps) {
   const router = useRouter();
   const [resource, setResource] = useState<Resource | null>(null);
   const [relatedResources, setRelatedResources] = useState<Resource[]>([]);
@@ -47,7 +46,8 @@ export default function ResourcePage({ params }: { params: { resourceId: string 
     const loadResource = async () => {
       setLoading(true);
       try {
-        const data = await getResourceById(decodeURIComponent(params.resourceId));
+        const resolvedParams = await params;
+        const data = await getResourceById(decodeURIComponent(resolvedParams.resourceId));
         if (data) {
           setResource(data);
           
@@ -66,7 +66,7 @@ export default function ResourcePage({ params }: { params: { resourceId: string 
     };
 
     loadResource();
-  }, [params.resourceId]);
+  }, [params]);
 
   if (loading) {
     return (
@@ -378,7 +378,6 @@ export default function ResourcePage({ params }: { params: { resourceId: string 
         {/* Recursos relacionados */}
         {relatedResources.length > 0 && (
           <Box sx={{ mt: 8 }}>
-            <Divider sx={{ mb: 4 }} />
             <Typography 
               variant="h5" 
               sx={{ 
