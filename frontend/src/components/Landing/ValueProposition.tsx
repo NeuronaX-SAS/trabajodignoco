@@ -28,31 +28,31 @@ const ValueProposition: React.FC = () => {
 
   const benefits = [
     {
-      title: "Eficiencia Máxima",
-      description: "Genera documentos legales completos en minutos, no días o semanas. Nuestra IA agiliza cada paso del proceso.",
+      title: "Información Actualizada",
+      description: "Accede a información laboral actualizada, comprensible y práctica sobre tus derechos como trabajador en Colombia.",
       icon: "⚡",
       color: "bg-[#DE735B]/10",
       textColor: "text-[#DE735B]",
-      highlight: "¡85% menos tiempo!",
-      metric: "Reduce el tiempo de creación de documentos legales hasta en un 85%"
+      highlight: "¡Conocimiento es poder!",
+      metric: "Recursos educativos diseñados para empoderar a los trabajadores colombianos"
     },
     {
       title: "Accesibilidad Total",
-      description: "Accede a asesoría legal profesional a una fracción del costo tradicional, sin compromiso y desde cualquier lugar.",
+      description: "Accede a recursos educativos sin costo, sin compromiso y desde cualquier lugar de Colombia.",
       icon: "🔓",
       color: "bg-[#517FA3]/10",
       textColor: "text-[#517FA3]",
-      highlight: "¡90% más económico!",
-      metric: "Ahorra hasta un 90% en comparación con servicios legales tradicionales"
+      highlight: "¡Recursos gratuitos!",
+      metric: "Educación y recursos laborales sin barreras económicas"
     },
     {
-      title: "Precisión Garantizada",
-      description: "Documentos legalmente válidos adaptados a la normativa colombiana vigente y a tu situación específica.",
+      title: "Información Confiable",
+      description: "Contenidos adaptados a la normativa colombiana vigente y desarrollados por expertos en derechos laborales.",
       icon: "✓",
       color: "bg-[#DE735B]/10",
       textColor: "text-[#DE735B]",
-      highlight: "100% válidos",
-      metric: "Documentos verificados y aprobados por expertos legales colombianos"
+      highlight: "100% confiable",
+      metric: "Contenido verificado y aprobado por expertos en derecho laboral colombiano"
     },
   ];
 
@@ -70,10 +70,10 @@ const ValueProposition: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              La Revolución Legal en Colombia
+              Educación para la Acción en Colombia
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              <span className="font-semibold">TrabajoDigno.co</span> transforma la manera en que accedes a servicios legales, ofreciéndote una plataforma intuitiva impulsada por IA que garantiza documentos eficientes, económicos y precisos.
+              <span className="font-semibold">TrabajoDigno.co</span> transforma la manera en que accedes a información sobre derechos laborales, ofreciéndote recursos educativos y una comunidad de apoyo para defender tu dignidad laboral.
             </p>
           </motion.div>
         </div>

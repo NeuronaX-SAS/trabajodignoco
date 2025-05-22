@@ -26,10 +26,9 @@ const HeroSection: React.FC = () => {
     <section className="relative overflow-hidden bg-gradient-to-br from-[#733A19] to-[#5C2E14] text-[#F2F0F0] py-16 md:py-24">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0 opacity-10">
-        {/* Subtle dot pattern overlay */}
+        {/* Light brown gradient background */}
         <div className="absolute inset-0" style={{ 
-          backgroundImage: 'radial-gradient(#F2F0F0 1px, transparent 1px)', 
-          backgroundSize: '20px 20px' 
+          background: 'linear-gradient(135deg, #D2BC9B 0%, #C4AA83 50%, #B69B78 100%)'
         }}></div>
         
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#BFAF8F] rounded-full filter blur-3xl opacity-20"></div>
@@ -67,7 +66,7 @@ const HeroSection: React.FC = () => {
                 Únete a la Causa
               </motion.button>
               <motion.button
-                onClick={() => router.push('/#resources')}
+                onClick={() => router.push('/portal')}
                 className="bg-transparent hover:bg-[#F2F0F0]/10 text-[#F2F0F0] border border-[#F2F0F0] font-semibold py-3 px-8 rounded-md transition duration-300 ease-in-out w-full sm:w-auto"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

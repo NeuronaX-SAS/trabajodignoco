@@ -19,8 +19,14 @@ export const metadata: Metadata = {
   title: "Trabajo Digno | Portal de Apoyo Laboral",
   description: "Trabajo Digno: Apoyo, recursos y comunidad para la defensa de los derechos laborales en Colombia.",
   icons: {
-    icon: "/favicon.ico"
-  }
+    icon: [
+      { url: "/logos/logo.svg", type: "image/svg+xml" },
+      { url: "/logos/logo.svg", sizes: "any", type: "image/svg+xml" }
+    ],
+    apple: { url: "/logos/logo.svg", type: "image/svg+xml" },
+    shortcut: { url: "/logos/logo.svg", type: "image/svg+xml" }
+  },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({

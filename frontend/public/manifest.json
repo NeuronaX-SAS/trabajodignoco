@@ -1,0 +1,17 @@
+{
+  "name": "Trabajo Digno",
+  "short_name": "TrabajoDig",
+  "icons": [
+    {
+      "src": "/logos/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#733A19",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/"
+} 

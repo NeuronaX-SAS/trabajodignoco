@@ -22,6 +22,10 @@ import {
   Divider,
   Grid
 } from '@mui/material';
+// Import firebase hook
+import useFirebase from '@/lib/hooks/useFirebase';
+// Import Notification component
+import Notification from '../Common/Notification';
 
 interface FormValues {
   FNAME: string; // Corresponds to Mailchimp FNAME merge tag
@@ -35,6 +39,9 @@ interface FormValues {
 
 const ContactForm: React.FC = () => {
   const router = useRouter();
+  // Use the firebase hook
+  const { loading: firebaseLoading, error: firebaseError, addDocument } = useFirebase();
+  
   const initialValues: FormValues = {
     FNAME: '',
     EMAIL: '',
@@ -49,6 +56,12 @@ const ContactForm: React.FC = () => {
   const [formSubmitting, setFormSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [formSuccess, setFormSuccess] = useState(false);
+  // Notification states
+  const [notification, setNotification] = useState({
+    open: false,
+    message: '',
+    type: 'success' as 'success' | 'error' | 'info' | 'warning'
+  });
 
   const legalSupportCategories = [
     { value: 'despido_injustificado', label: 'Despido Injustificado' },
@@ -106,7 +119,7 @@ const ContactForm: React.FC = () => {
     return true;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!validateForm()) return;
@@ -114,9 +127,34 @@ const ContactForm: React.FC = () => {
     setFormSubmitting(true);
     setFormError(null);
     
-    // Form will submit naturally to Mailchimp
-    // Just handle UI feedback
-    setTimeout(() => {
+    try {
+      // Create submission object with form values
+      const contactSubmission = {
+        fullName: formValues.FNAME,
+        email: formValues.EMAIL,
+        phone: formValues.MMERGE2,
+        workerType: formValues.WORKER_TYPE,
+        supportType: formValues.SUPPORT_TYPE,
+        message: formValues.MMERGE7,
+        consentGiven: formValues.DATA_CONSENT
+        // Note: createdAt will be added by the hook
+      };
+      
+      // Submit to Firestore using our custom hook
+      const docId = await addDocument('contactSubmissions', contactSubmission);
+      
+      if (!docId) {
+        throw new Error('No se pudo guardar la información');
+      }
+      
+      // Show success notification
+      setNotification({
+        open: true,
+        message: '¡Tu información ha sido enviada con éxito! Pronto nos pondremos en contacto contigo.',
+        type: 'success'
+      });
+      
+      // Reset form and show success message
       setFormSubmitting(false);
       setFormSuccess(true);
       setFormValues(initialValues);
@@ -124,11 +162,38 @@ const ContactForm: React.FC = () => {
       setTimeout(() => {
         setFormSuccess(false);
       }, 5000);
-    }, 1500);
+    } catch (error) {
+      console.error("Error submitting form to Firebase:", error);
+      setFormSubmitting(false);
+      setFormError("Hubo un error al enviar el formulario. Por favor intenta nuevamente.");
+      
+      // Show error notification
+      setNotification({
+        open: true,
+        message: 'Ocurrió un error al enviar tu información. Por favor intenta nuevamente.',
+        type: 'error'
+      });
+    }
+  };
+
+  // Add handler to close notification
+  const handleCloseNotification = () => {
+    setNotification({
+      ...notification,
+      open: false
+    });
   };
 
   return (
     <section id="contact-form" className="py-20 bg-[#F2F0F0] relative overflow-hidden">
+      {/* Add Notification component */}
+      <Notification
+        open={notification.open}
+        message={notification.message}
+        type={notification.type}
+        onClose={handleCloseNotification}
+      />
+      
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-64 h-64 bg-[#BFAF8F] rounded-full filter blur-2xl opacity-10 -ml-32 -mt-32"></div>
@@ -483,47 +548,49 @@ const ContactForm: React.FC = () => {
 export default ContactForm;
 
 // Mailchimp Scripts
-<>
-  <Script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js" strategy="lazyOnload" />
-  <Script id="mc-validate-inline-script" strategy="lazyOnload">
-    {`
-      (function($) {
-        if (typeof $ === 'undefined') return; // Ensure jQuery is loaded
-        window.fnames = new Array();
-        window.ftypes = new Array();
-        fnames[0]='EMAIL';ftypes[0]='email';
-        fnames[1]='FNAME';ftypes[1]='text';
-        fnames[2]='MMERGE2';ftypes[2]='number'; // Match Mailchimp type
-        fnames[7]='MMERGE7';ftypes[7]='text';
-        
-        // Optional: Keep Spanish validation messages if needed by mc-validate.js
-        if ($.validator) {
-          $.extend($.validator.messages, {
-            required: "Este campo es obligatorio.",
-            remote: "Por favor, rellena este campo.",
-            email: "Por favor, escribe una dirección de correo válida",
-            url: "Por favor, escribe una URL válida.",
-            date: "Por favor, escribe una fecha válida.",
-            dateISO: "Por favor, escribe una fecha (ISO) válida.",
-            number: "Por favor, escribe un número entero válido.", // Keep if MMERGE2 validation needed
-            digits: "Por favor, escribe sólo dígitos.",
-            creditcard: "Por favor, escribe un número de tarjeta válido.",
-            equalTo: "Por favor, escribe el mismo valor de nuevo.",
-            accept: "Por favor, escribe un valor con una extensión aceptada.",
-            maxlength: $.validator.format("Por favor, no escribas más de {0} caracteres."),
-            minlength: $.validator.format("Por favor, no escribas menos de {0} caracteres."),
-            rangelength: $.validator.format("Por favor, escribe un valor entre {0} y {1} caracteres."),
-            range: $.validator.format("Por favor, escribe un valor entre {0} y {1}."),
-            max: $.validator.format("Por favor, escribe un valor menor o igual a {0}."),
-            min: $.validator.format("Por favor, escribe un valor mayor o igual a {0}.")
-          });
-        }
-        
-        // Ensure mcj is defined if mc-validate needs it
-        if (typeof jQuery !== 'undefined') {
-           var $mcj = jQuery.noConflict(true);
-        }
-      }(window.jQuery)); // Pass jQuery if available
-    `}
-  </Script>
-</>
+const MailchimpScripts = () => (
+  <>
+    <Script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js" strategy="lazyOnload" />
+    <Script id="mc-validate-inline-script" strategy="lazyOnload">
+      {`
+        (function($) {
+          if (typeof $ === 'undefined') return; // Ensure jQuery is loaded
+          window.fnames = new Array();
+          window.ftypes = new Array();
+          fnames[0]='EMAIL';ftypes[0]='email';
+          fnames[1]='FNAME';ftypes[1]='text';
+          fnames[2]='MMERGE2';ftypes[2]='number'; // Match Mailchimp type
+          fnames[7]='MMERGE7';ftypes[7]='text';
+          
+          // Optional: Keep Spanish validation messages if needed by mc-validate.js
+          if ($.validator) {
+            $.extend($.validator.messages, {
+              required: "Este campo es obligatorio.",
+              remote: "Por favor, rellena este campo.",
+              email: "Por favor, escribe una dirección de correo válida",
+              url: "Por favor, escribe una URL válida.",
+              date: "Por favor, escribe una fecha válida.",
+              dateISO: "Por favor, escribe una fecha (ISO) válida.",
+              number: "Por favor, escribe un número entero válido.", // Keep if MMERGE2 validation needed
+              digits: "Por favor, escribe sólo dígitos.",
+              creditcard: "Por favor, escribe un número de tarjeta válido.",
+              equalTo: "Por favor, escribe el mismo valor de nuevo.",
+              accept: "Por favor, escribe un valor con una extensión aceptada.",
+              maxlength: $.validator.format("Por favor, no escribas más de {0} caracteres."),
+              minlength: $.validator.format("Por favor, no escribas menos de {0} caracteres."),
+              rangelength: $.validator.format("Por favor, escribe un valor entre {0} y {1} caracteres."),
+              range: $.validator.format("Por favor, escribe un valor entre {0} y {1}."),
+              max: $.validator.format("Por favor, escribe un valor menor o igual a {0}."),
+              min: $.validator.format("Por favor, escribe un valor mayor o igual a {0}.")
+            });
+          }
+          
+          // Ensure mcj is defined if mc-validate needs it
+          if (typeof jQuery !== 'undefined') {
+             var $mcj = jQuery.noConflict(true);
+          }
+        }(window.jQuery)); // Pass jQuery if available
+      `}
+    </Script>
+  </>
+);

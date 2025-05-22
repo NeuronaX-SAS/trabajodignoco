@@ -17,17 +17,8 @@ const CommunityCallToAction: React.FC = () => {
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#733A19] via-[#8B5E43] to-[#5C2E14] z-0"></div>
       
-      {/* Pattern overlay */}
-      <div className="absolute inset-0 opacity-10 z-0">
-        <svg width="100%" height="100%">
-          <defs>
-            <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="white" strokeWidth="1"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#smallGrid)" />
-        </svg>
-      </div>
+      {/* Pattern overlay - Removing grid pattern */}
+      {/* No pattern needed anymore */}
       
       {/* Decorative circles */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-[#BFAF8F] rounded-full filter blur-3xl opacity-10 -ml-48 -mt-48 z-0"></div>

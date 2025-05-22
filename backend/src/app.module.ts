@@ -8,7 +8,7 @@ import { UsersModule } from './users.module';
 import { UsersService } from './users.service';
 import { AuthModule } from './auth.module';
 import { AuthController } from './auth.controller';
-import { AiModule } from './ai.module';
+// import { AiModule } from './ai.module'; // AI module disabled as per requirements
 
 @Module({
   imports: [
@@ -31,7 +31,7 @@ import { AiModule } from './ai.module';
     }),
     UsersModule,
     AuthModule,
-    AiModule,
+    // AiModule, // AI module disabled as per requirements
   ],
   controllers: [AppController, AuthController],
   providers: [AppService],

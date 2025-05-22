@@ -5,7 +5,6 @@ import ResourcesSection from '@/components/Landing/ResourcesSection';
 import FormationSection from '@/components/Landing/FormationSection';
 import NewsSection from '@/components/Landing/NewsSection';
 import ContactForm from '@/components/Landing/ContactForm';
-import UnionsMapSection from '@/components/Landing/UnionsMapSection';
 import CommunityCallToAction from '@/components/Landing/CommunityCallToAction';
 
 export default function HomePage() {
@@ -16,7 +15,6 @@ export default function HomePage() {
       <ResourcesSection />
       <FormationSection />
       <NewsSection />
-      <UnionsMapSection />
       <ContactForm />
       <CommunityCallToAction />
     </Box>

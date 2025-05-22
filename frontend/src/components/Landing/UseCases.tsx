@@ -271,7 +271,7 @@ const UseCases: React.FC = () => {
               <div className="md:max-w-xl">
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">¿Tienes un caso especial?</h3>
                 <p className="text-white/90">
-                  Nuestra IA está entrenada con el Código Sustantivo del Trabajo y toda la legislación laboral colombiana vigente. Puede ayudarte con casi cualquier situación legal laboral.
+                  Nuestro equipo conoce a profundidad el Código Sustantivo del Trabajo y toda la legislación laboral colombiana vigente. Podemos orientarte con tu situación laboral específica.
                 </p>
               </div>
               <div>

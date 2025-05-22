@@ -11,7 +11,7 @@ import { marked } from 'marked';
 const newsItems = [
   {
     id: '1',
-    title: 'Cartilla: Conozca sus derechos laborales fundamentales',
+    title: 'Conoce tus derechos laborales fundamentales',
     excerpt: 'Guía práctica sobre los derechos laborales más importantes que todo trabajador colombiano debe conocer para defender su dignidad en el trabajo.',
     content: `<h2>Defiende tu Dignidad: Guía Esencial de Derechos Laborales en Colombia</h2>
 
@@ -72,14 +72,14 @@ const newsItems = [
 <p>Defender tu dignidad en el trabajo comienza por estar informado. Investiga, pregunta y no dudes en hacer valer los derechos que la ley colombiana te otorga. Un trabajador informado es un trabajador respetado.</p>`,
     date: '18 May 2025',
     author: 'Redacción Trabajo Digno',
-    imageUrl: '/placeholder-news-1.jpg',
+    imageUrl: '/images/trabajo.jpg',
     category: 'Recursos Educativos'
   },
   {
     id: '2',
     title: 'Derechos de los trabajadores en plataformas digitales',
     excerpt: 'Los trabajadores de aplicaciones como Rappi, Uber y otras plataformas digitales tienen derechos laborales que deben ser respetados. Conoce cuáles son.',
-    content: `<h2>Trabajadores de Plataformas Digitales en Colombia: ¿Cuáles son tus Derechos?</h2>
+    content: `
 
 <p>El auge de aplicaciones como Rappi, Uber, DiDi, Picap y otras plataformas digitales ha transformado la manera en que accedemos a servicios y, fundamentalmente, ha creado nuevas formas de trabajo. Miles de colombianos encuentran en estas plataformas una fuente de ingresos, pero surge una pregunta crucial: ¿cuáles son sus derechos laborales? Si eres uno de ellos, esta información te interesa.</p>
 
@@ -142,14 +142,14 @@ const newsItems = [
 <p>El trabajo en plataformas digitales es una realidad que llegó para quedarse. Asegurar que este modelo sea sostenible y justo para quienes lo hacen posible es un desafío que involucra a trabajadores, empresas, gobierno y sociedad en general. Conocer tus derechos es el primer paso para defender tu dignidad en este nuevo entorno laboral.</p>`,
     date: '18 May 2025',
     author: 'Redacción Trabajo Digno',
-    imageUrl: '/placeholder-news-2.jpg',
+    imageUrl: '/images/rappi.jpg',
     category: 'Derechos Laborales'
   },
   {
     id: '3',
-    title: 'Cómo organizarse colectivamente en tu lugar de trabajo',
-    excerpt: 'Guía práctica para la organización colectiva de los trabajadores: cómo fortalecer lazos de solidaridad y construir poder desde la base.',
-    content: `<h2>Construyendo Poder desde la Base: Guía Práctica para la Organización Colectiva de Trabajadores</h2>
+    title: 'Cómo organizarse colectivamente en el lugar de trabajo',
+    excerpt: 'Cómo fortalecer lazos de solidaridad y construir poder desde la base.',
+    content: `
 
 <p>En un mundo laboral que a menudo puede parecer desigual, la unión hace la fuerza. La organización colectiva es una herramienta poderosa que permite a los trabajadores y trabajadoras no solo defender sus derechos, sino también mejorar sus condiciones laborales y construir un futuro más justo. Esta guía práctica te mostrará cómo puedes empezar a fortalecer lazos de solidaridad y construir poder desde la base junto a tus compañeros.</p>
 
@@ -234,7 +234,7 @@ const newsItems = [
 <p>La organización colectiva de los trabajadores es un derecho y una necesidad para construir relaciones laborales más justas y equitativas. Fortalecer los lazos de solidaridad y construir poder desde la base no es una tarea sencilla, pero sus frutos –dignidad, respeto y mejores condiciones para todos– hacen que el esfuerzo valga la pena. ¡El poder de cambiar las cosas reside en su unidad!</p>`,
     date: '18 May 2025',
     author: 'Invitado: Sindicalista',
-    imageUrl: '/placeholder-news-3.jpg',
+    imageUrl: '/images/union.jpg',
     category: 'Organización'
   }
 ];
@@ -377,22 +377,54 @@ const NewsSection: React.FC = () => {
         )}
         {/* Modal for full article */}
         <Modal open={open} onClose={handleClose} aria-labelledby="blog-modal-title" aria-describedby="blog-modal-content">
-          <Box sx={{ maxWidth: 600, bgcolor: 'white', mx: 'auto', my: 8, borderRadius: 3, boxShadow: 24, p: 4, outline: 'none', position: 'relative' }}>
-            <IconButton onClick={handleClose} sx={{ position: 'absolute', top: 12, right: 12 }} aria-label="Cerrar">
+          <Box sx={{ 
+            maxWidth: 600, 
+            maxHeight: '90vh', 
+            bgcolor: 'white', 
+            mx: 'auto', 
+            my: '5vh', 
+            borderRadius: 3, 
+            boxShadow: 24, 
+            p: 4, 
+            outline: 'none', 
+            position: 'relative',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column'
+          }}>
+            <IconButton onClick={handleClose} sx={{ position: 'absolute', top: 12, right: 12, zIndex: 10 }} aria-label="Cerrar">
               <CloseIcon />
             </IconButton>
             {selected && (
               <>
-                <Box sx={{ height: 220, width: '100%', mb: 2, borderRadius: 2, overflow: 'hidden', background: '#eee' }}>
+                <Box sx={{ height: 220, width: '100%', mb: 2, borderRadius: 2, overflow: 'hidden', background: '#eee', flexShrink: 0 }}>
                   <img
                     src={selected.imageUrl}
                     alt={selected.title}
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
                 </Box>
-                <Typography variant="caption" color="text.secondary" sx={{ mb: 0.5 }}>{selected.date} {selected.author && <>· {selected.author}</>}</Typography>
-                <Typography variant="h5" fontWeight={700} sx={{ mb: 2, color: '#0E1013' }}>{selected.title}</Typography>
-                <Box sx={{ mb: 3 }}>
+                <Typography variant="caption" color="text.secondary" sx={{ mb: 0.5, flexShrink: 0 }}>{selected.date} {selected.author && <>· {selected.author}</>}</Typography>
+                <Typography variant="h5" fontWeight={700} sx={{ mb: 2, color: '#0E1013', flexShrink: 0 }}>{selected.title}</Typography>
+                <Box sx={{ 
+                  mb: 3, 
+                  overflowY: 'auto',
+                  pr: 1,
+                  '&::-webkit-scrollbar': {
+                    width: '6px',
+                  },
+                  '&::-webkit-scrollbar-track': {
+                    background: '#f1f1f1',
+                    borderRadius: '10px',
+                  },
+                  '&::-webkit-scrollbar-thumb': {
+                    background: '#BFAF8F',
+                    borderRadius: '10px',
+                  },
+                  '&::-webkit-scrollbar-thumb:hover': {
+                    background: '#733A19',
+                  }
+                }}>
                   <div dangerouslySetInnerHTML={{ __html: marked.parse(selected.content) }} />
                 </Box>
               </>

@@ -8,25 +8,25 @@ const HowItWorks: React.FC = () => {
     {
       number: '01',
       title: 'Describe tu Necesidad',
-      description: 'Explica en lenguaje natural qué documento necesitas o qué problema legal enfrentas. Nuestra IA entiende el lenguaje coloquial.',
+      description: 'Explica en lenguaje natural qué información necesitas o qué tema laboral te interesa conocer más a fondo.',
       icon: '💬'
     },
     {
       number: '02',
-      title: 'Responde Preguntas Específicas',
-      description: 'El sistema te hará preguntas relevantes para personalizar completamente tu documento según tu situación particular.',
-      icon: '❓'
+      title: 'Encuentra Recursos Educativos',
+      description: 'Accede a nuestra biblioteca de recursos educativos sobre derechos laborales, organizados por temas y situaciones específicas.',
+      icon: '📚'
     },
     {
       number: '03',
-      title: 'Revisa el Documento Generado',
-      description: 'En minutos recibirás un documento legalmente válido, personalizado y adaptado a la legislación colombiana vigente.',
+      title: 'Consulta el Material Relevante',
+      description: 'Revisa guías, documentos informativos y material educativo adaptado a la legislación colombiana vigente.',
       icon: '📄'
     },
     {
       number: '04',
-      title: 'Descarga y Utiliza',
-      description: 'Descarga tu documento en formato PDF o Word, listo para imprimir, firmar y presentar ante las autoridades correspondientes.',
+      title: 'Conéctate con la Comunidad',
+      description: 'Participa en espacios de formación y encuentra apoyo en nuestra comunidad de trabajadores organizados.',
       icon: '✅'
     }
   ];
@@ -54,7 +54,7 @@ const HowItWorks: React.FC = () => {
             ¿Cómo Funciona TrabajoDigno.co?
           </h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            Nuestra plataforma utiliza inteligencia artificial avanzada para simplificar procesos legales complejos en cuatro sencillos pasos.
+            Nuestra plataforma te conecta con recursos educativos y una comunidad comprometida con la defensa de los derechos laborales en Colombia.
           </p>
         </motion.div>
 

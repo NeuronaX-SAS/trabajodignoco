@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   AppBar, 
   Box, 
@@ -17,17 +17,13 @@ import {
   ListItemText,
   useMediaQuery,
   useTheme,
-  Avatar,
   ListItemButton
 } from '@mui/material';
-import { useSelector, useDispatch } from 'react-redux';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { logout } from '../../lib/redux/slices/authSlice';
-import { RootState, AppDispatch } from '../../lib/redux/store';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -46,18 +42,11 @@ function HideOnScroll(props: { children: React.ReactElement }) { // Ensure child
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
-  const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const pathname = usePathname();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const handleLogout = () => {
-    dispatch(logout());
-    router.push('/login');
-  };
 
   // Function to handle contact form redirection
   const scrollToContact = () => {
@@ -167,20 +156,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 >
                   Trabajo<Box component="span" sx={{ color: '#BFAF8F' }}>Digno</Box>
                 </Typography>
-                {/* Social Media Icons - Hide on mobile from header bar */}
-                {!isMobile && (
-                  <Box sx={{ display: 'flex', alignItems: 'center', ml: 3, gap: 1 }}>
-                    <a href="https://www.instagram.com/trabajodigno.col/" target="_blank" rel="noopener noreferrer">
-                      <img src="/social/instagram-1-svgrepo-com.svg" alt="Instagram" width={22} height={22} />
-                    </a>
-                    <a href="https://www.tiktok.com/@trabajodigno.col" target="_blank" rel="noopener noreferrer">
-                      <img src="/social/tiktok-icon-white-1-logo-svgrepo-com.svg" alt="TikTok" width={22} height={22} />
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=61575746772724" target="_blank" rel="noopener noreferrer">
-                      <img src="/social/facebook-color-svgrepo-com.svg" alt="Facebook" width={22} height={22} />
-                    </a>
-                  </Box>
-                )}
               </Box>
             </Box>
 
@@ -210,63 +185,24 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               </Box>
             )}
 
-            {/* Auth Buttons or User Menu */}
+            {/* Replace Auth Buttons with single button */}
             {!isMobile && (
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                {isAuthenticated ? (
-                  <>
-                    <Button 
-                      variant="outlined"
-                      color="inherit"
-                      component={Link} 
-                      href="/dashboard"
-                      sx={{ 
-                        mr: 1.5, 
-                        borderColor: 'rgba(242,240,240,0.5)',
-                        '&:hover': { borderColor: '#F2F0F0', backgroundColor: 'rgba(242,240,240,0.1)' }
-                      }}
-                    >
-                      Mi Espacio
-                    </Button>
-                    <Button 
-                      color="inherit" 
-                      onClick={handleLogout}
-                      sx={{ backgroundColor: 'rgba(14,16,19,0.2)', '&:hover': { backgroundColor: 'rgba(14,16,19,0.3)' } }}
-                    >
-                      Cerrar Sesión
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Button 
-                      variant="outlined"
-                      color="inherit"
-                      onClick={scrollToContact}
-                      sx={{ 
-                        mr: 1.5, 
-                        borderColor: 'rgba(242,240,240,0.5)',
-                        '&:hover': { borderColor: '#F2F0F0', backgroundColor: 'rgba(242,240,240,0.1)' }
-                      }}
-                    >
-                      Participa
-                    </Button>
-                    <Button 
-                      variant="contained"
-                      sx={{ 
-                        backgroundColor: '#BFAF8F', 
-                        color: '#0E1013',
-                        fontWeight: 600,
-                        '&:hover': { backgroundColor: '#D0C7AF' },
-                        minWidth: 'fit-content',  // Ensure button width fits content
-                        whiteSpace: 'nowrap',     // Prevent text wrapping
-                        mr: { xs: 3.5, sm: 1 }    // Add right margin to prevent cutting off
-                      }}
-                      onClick={scrollToContact}
-                    >
-                      Únete
-                    </Button>
-                  </>
-                )}
+                <Button 
+                  variant="contained"
+                  sx={{ 
+                    backgroundColor: '#BFAF8F', 
+                    color: '#0E1013',
+                    fontWeight: 600,
+                    '&:hover': { backgroundColor: '#D0C7AF' },
+                    minWidth: 'fit-content',
+                    whiteSpace: 'nowrap',
+                    mr: { xs: 3.5, sm: 1 }
+                  }}
+                  onClick={() => router.push('/portal')}
+                >
+                  Ingresa a Trabajo Digno
+                </Button>
               </Box>
             )}
 
@@ -300,7 +236,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           '& .MuiDrawer-paper': { 
             width: '70%', 
             maxWidth: 300,
-            backgroundImage: 'linear-gradient(180deg, #DE735B 0%, #C35D45 100%)',
+            backgroundImage: 'linear-gradient(180deg, #153959 0%, #0D253C 100%)',
             color: 'white',
             px: 2
           }
@@ -350,83 +286,26 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               </ListItemButton>
             </ListItem>
           ))}
-          
-          {/* Social Media Icons - Add to Mobile Drawer */}
-          {isMobile && (
-            <ListItem sx={{ display: 'flex', justifyContent: 'center', pt: 2, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                <a href="https://www.instagram.com/trabajodigno.col/" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
-                  <img src="/social/instagram-1-svgrepo-com.svg" alt="Instagram" width={28} height={28} />
-                </a>
-                <a href="https://www.tiktok.com/@trabajodigno.col" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
-                  <img src="/social/tiktok-icon-white-1-logo-svgrepo-com.svg" alt="TikTok" width={28} height={28} />
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61575746772724" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
-                  <img src="/social/facebook-color-svgrepo-com.svg" alt="Facebook" width={28} height={28} />
-                </a>
-              </Box>
-            </ListItem>
-          )}
 
-          {/* Auth Links */}
-          <Box sx={{ mt: 2, borderTop: isMobile ? 'none' : '1px solid rgba(255,255,255,0.1)', pt: isMobile ? 0 : 2 }}>
-            {isAuthenticated ? (
-              <>
-                <ListItem disablePadding sx={{ mb: 1 }}>
-                  <ListItemButton
-                    component={Link}
-                    href="/dashboard"
-                    onClick={() => setDrawerOpen(false)}
-                    sx={{ borderRadius: 1, '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)' } }}
-                  >
-                    <ListItemText primary="Dashboard" primaryTypographyProps={{ fontWeight: 500 }} />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton
-                    onClick={() => {
-                      handleLogout();
-                      setDrawerOpen(false);
-                    }}
-                    sx={{ borderRadius: 1, '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)' } }}
-                  >
-                    <ListItemText primary="Cerrar Sesión" primaryTypographyProps={{ fontWeight: 500 }} />
-                  </ListItemButton>
-                </ListItem>
-              </>
-            ) : (
-              <>
-                <ListItem disablePadding sx={{ mb: 1 }}>
-                  <ListItemButton
-                    onClick={() => {
-                      scrollToContact();
-                      setDrawerOpen(false);
-                    }}
-                    sx={{ borderRadius: 1, '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)' } }}
-                  >
-                    <ListItemText primary="Iniciar Sesión" primaryTypographyProps={{ fontWeight: 500 }} />
-                  </ListItemButton>
-                </ListItem>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  fullWidth
-                  onClick={() => {
-                    scrollToContact();
-                    setDrawerOpen(false);
-                  }}
-                  sx={{ 
-                    mt: 1, 
-                    backgroundColor: 'white', 
-                    color: '#DE735B',
-                    fontWeight: 600,
-                    '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' } 
-                  }}
-                >
-                  Registrarse
-                </Button>
-              </>
-            )}
+          {/* Auth Links - Replace with single "Ingresa a Trabajo Digno" button */}
+          <Box sx={{ mt: 2, borderTop: '1px solid rgba(255,255,255,0.1)', pt: 2 }}>
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={() => {
+                router.push('/portal');
+                setDrawerOpen(false);
+              }}
+              sx={{ 
+                mt: 1, 
+                backgroundColor: '#BFAF8F', 
+                color: '#0E1013',
+                fontWeight: 600,
+                '&:hover': { backgroundColor: '#D0C7AF' } 
+              }}
+            >
+              Ingresa a Trabajo Digno
+            </Button>
           </Box>
         </List>
       </Drawer>
